@@ -1,0 +1,38 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# OUTPUT CONFIGURATION
+# ════════════════════════════════════════════════════════════════════════════════
+# Display configuration for WehttamSnaps setup
+# Run `swaymsg -t get_outputs` to see your output names
+
+# ────────────────────────────────────────────────────────────────────────────────
+# PRIMARY DISPLAY
+# ────────────────────────────────────────────────────────────────────────────────
+# Dell XPS 8700 - 1920x1080 @ 60Hz
+# Adjust the output name (DP-2, HDMI-A-1, etc.) based on your setup
+
+# Example configuration:
+# output HDMI-A-1 resolution 1920x1080 position 1920,0
+
+# Uncomment and modify for your display:
+# output DP-2 resolution 1920x1080 position 0,0
+
+# ────────────────────────────────────────────────────────────────────────────────
+# WACOM TABLET MAPPING (Optional)
+# ────────────────────────────────────────────────────────────────────────────────
+# Map tablet to specific output for photography work
+# input "1386:884:Wacom_Intuos_S_Pad" map_to_output DP-2
+# input "1386:884:Wacom_Intuos_S_Pen" map_to_output DP-2
+
+# ────────────────────────────────────────────────────────────────────────────────
+# AUTOMATIC OUTPUT MANAGEMENT
+# ────────────────────────────────────────────────────────────────────────────────
+# Use kanshi for automatic display configuration
+# Install: sudo pacman -S kanshi
+# Config: ~/.config/kanshi/config
+exec kanshi
+
+# ────────────────────────────────────────────────────────────────────────────────
+# HI-DPI SUPPORT
+# ────────────────────────────────────────────────────────────────────────────────
+# Uncomment if using a HiDPI display
+# exec_always ~/.config/sway/scripts/hidpi_1.5.sh

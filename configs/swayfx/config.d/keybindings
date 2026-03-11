@@ -1,0 +1,298 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# KEYBINDINGS CONFIGURATION
+# ════════════════════════════════════════════════════════════════════════════════
+# WehttamSnaps keybindings with J.A.R.V.I.S. integration
+
+# ────────────────────────────────────────────────────────────────────────────────
+# MOD KEY DEFINITIONS
+# ────────────────────────────────────────────────────────────────────────────────
+set {
+    $mod Mod4           # Super/Windows key
+    $mod1 Mod1          # Alt key
+    
+    # Vim-style navigation
+    $left h
+    $down j
+    $up k
+    $right l
+    
+    # Default applications
+    $term ghostty       # or footclient
+    $launcher rofi -show drun
+    $menu nwg-drawer
+    $powermenu ~/.config/sway/scripts/power_menu.sh
+}
+
+# ────────────────────────────────────────────────────────────────────────────────
+# NOCTALIA SHELL IPC
+# ────────────────────────────────────────────────────────────────────────────────
+set $ipc qs -c noctalia-shell ipc call
+
+# ════════════════════════════════════════════════════════════════════════════════
+# NOCTALIA SHELL BINDINGS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym $mod+space exec $ipc launcher toggle
+bindsym $mod+s exec $ipc controlCenter toggle
+bindsym $mod+comma exec $ipc settings toggle
+bindsym $mod+v exec $ipc clipboard toggle
+
+# ════════════════════════════════════════════════════════════════════════════════
+# MEDIA KEYS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym --locked {
+    XF86AudioRaiseVolume exec $ipc volume increase
+    XF86AudioLowerVolume exec $ipc volume decrease
+    XF86AudioMute exec $ipc volume muteOutput
+    XF86AudioMicMute exec $ipc volume muteInput
+    XF86MonBrightnessUp exec $ipc brightness increase
+    XF86MonBrightnessDown exec $ipc brightness decrease
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# CORE BINDINGS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Terminal
+    $mod+Return exec $term
+    
+    # Power menu
+    Ctrl+Alt+Delete exec $powermenu
+    
+    # Kill focused window
+    $mod+Backspace kill
+    $mod+q kill
+    
+    # Application launcher
+    $mod+d exec $launcher
+    
+    # Menu
+    $mod+Shift+d exec $menu
+    
+    # Window switcher
+    Alt+Tab exec swayr switch-to-urgent-or-lru-window
+    $mod+Tab exec swayr switch-window
+    $mod+Shift+Tab exec swayr switch-workspace-or-window
+    
+    # Lock screen
+    $mod+F1 exec gtklock
+    
+    # Open config file
+    $mod+Shift+i exec $term -T sway_config -e micro ~/.config/sway/config
+    
+    # Reload configuration
+    $mod+Shift+c reload
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# APPLICATION LAUNCHERS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # File manager
+    $mod+e exec thunar
+    
+    # Browser
+    $mod+b exec firefox
+    $mod+Shift+b exec brave
+    
+    # Text editor
+    $mod+Shift+t exec kate
+    
+    # OBS Studio
+    $mod+o exec obs
+    
+    # Spotify
+    $mod+p exec spotify
+    
+    # Keybindings help
+    $mod+h exec ~/.config/wehttamsnaps/scripts/KeyHints.sh
+    
+    # Welcome screen
+    $mod+Shift+w exec python3 ~/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py --force
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# WEBAPP LAUNCHERS (Mod + Ctrl)
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    $mod+Ctrl+y exec ~/.config/wehttamsnaps/webapps/youtube.webapp
+    $mod+Ctrl+t exec ~/.config/wehttamsnaps/webapps/twitch.webapp
+    $mod+Ctrl+s exec ~/.config/wehttamsnaps/webapps/spotify.webapp
+    $mod+Ctrl+d exec ~/.config/wehttamsnaps/webapps/discord.webapp
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# GAMING BINDINGS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Toggle gaming mode
+    $mod+Shift+g exec ~/.config/wehttamsnaps/scripts/toggle-gamemode.sh
+    
+    # Launch Steam
+    $mod+$mod1+s exec steam
+    
+    # Launch Steam in Gamescope
+    $mod+$mod1+g exec gamescope -- steam
+    
+    # ProtonUp-Qt
+    $mod+$mod1+p exec protonup-qt
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# FOCUS MOVEMENT
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Arrow keys
+    $mod+Left focus left
+    $mod+Down focus down
+    $mod+Up focus up
+    $mod+Right focus right
+    
+    # Vim keys
+    $mod+$left focus left
+    $mod+$down focus down
+    $mod+$up focus up
+    $mod+$right focus right
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# WINDOW MOVEMENT
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Arrow keys
+    $mod+Shift+Left move left
+    $mod+Shift+Down move down
+    $mod+Shift+Up move up
+    $mod+Shift+Right move right
+    
+    # Vim keys
+    $mod+Shift+$left move left
+    $mod+Shift+$down move down
+    $mod+Shift+$up move up
+    $mod+Shift+$right move right
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# LAYOUT CONTROLS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Split orientation
+    $mod+v splitv
+    # $mod+Shift+v splith
+    
+    # Layout styles
+    $mod+Shift+s layout stacking
+    $mod+Shift+w layout tabbed
+    $mod+Shift+e layout toggle split
+    
+    # Fullscreen
+    $mod+f fullscreen
+    
+    # Toggle floating
+    $mod+Shift+v floating toggle
+    
+    # Focus toggle (tiling/floating)
+    $mod+Shift+space focus mode_toggle
+    
+    # Focus parent
+    $mod+a focus parent
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# RESIZING
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Arrow keys
+    $mod+Ctrl+Right resize shrink width 10 px
+    $mod+Ctrl+Up resize grow height 10 px
+    $mod+Ctrl+Down resize shrink height 10 px
+    $mod+Ctrl+Left resize grow width 10 px
+    
+    # Vim keys
+    $mod+Ctrl+$right resize shrink width 10 px
+    $mod+Ctrl+$up resize grow height 10 px
+    $mod+Ctrl+$down resize shrink height 10 px
+    $mod+Ctrl+$left resize grow width 10 px
+}
+
+# ────────────────────────────────────────────────────────────────────────────────
+# RESIZE FLOATING WINDOWS WITH MOUSE
+# ────────────────────────────────────────────────────────────────────────────────
+bindsym --whole-window --border {
+    $mod+button4 resize shrink height 5 px or 5 ppt
+    $mod+button5 resize grow height 5 px or 5 ppt
+    $mod+Shift+button4 resize shrink width 5 px or 5 ppt
+    $mod+Shift+button5 resize grow width 5 px or 5 ppt
+}
+
+# ────────────────────────────────────────────────────────────────────────────────
+# FLOATING MODIFIER
+# ────────────────────────────────────────────────────────────────────────────────
+# Move windows with $mod + left mouse button
+# Resize windows with $mod + right mouse button
+floating_modifier $mod normal
+
+# ════════════════════════════════════════════════════════════════════════════════
+# SCRATCHPAD
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    $mod+Shift+minus move scratchpad
+    $mod+minus scratchpad show
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# SCREENSHOTS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Region screenshot
+    Print exec grim -g "$(slurp)" - | swappy -f -
+    
+    # Full screenshot
+    $mod+Print exec grim ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && ~/.config/wehttamsnaps/scripts/sound-system screenshot
+    
+    # Window screenshot
+    Ctrl+Print exec ~/.config/sway/scripts/screenshot_window.sh
+    
+    # Display screenshot
+    Shift+Print exec ~/.config/sway/scripts/screenshot_display.sh
+    
+    # Photo export (with J.A.R.V.I.S. sound)
+    $mod+Shift+e exec ~/.config/wehttamsnaps/scripts/sound-system photo-export
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# MEDIA CONTROLS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    XF86AudioPlay exec playerctl play-pause
+    XF86AudioNext exec playerctl next
+    XF86AudioPrev exec playerctl previous
+    XF86AudioStop exec playerctl stop
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# CLIPBOARD MANAGER
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Show clipboard history
+    $mod+Ctrl+v exec cliphist list | rofi -d -w 90 -l 30 -p "Clipboard:" | cliphist decode | wl-copy
+    
+    # Delete from clipboard history
+    $mod+Ctrl+x exec cliphist list | rofi -d -w 90 -l 30 -p "Delete:" | cliphist delete
+}
+
+# ════════════════════════════════════════════════════════════════════════════════
+# SYSTEM CONTROLS
+# ════════════════════════════════════════════════════════════════════════════════
+bindsym {
+    # Power off displays
+    $mod+Shift+p exec swaymsg "output * dpms off"
+    
+    # Hotkey overlay
+    $mod+Shift+slash exec swaymsg "bindsym --whole-window button1 nop"
+    
+    # Lock screen (alternative)
+    $mod+$mod1+l exec gtklock
+    
+    # Exit Sway
+    $mod+$mod1+e exec swaynag -t warning -m 'Exit Sway?' -B 'Yes' 'swaymsg exit'
+}

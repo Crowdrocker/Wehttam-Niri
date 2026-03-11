@@ -1,0 +1,115 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# WORKSPACE CONFIGURATION
+# ════════════════════════════════════════════════════════════════════════════════
+# 10 organized workspaces for Photography, Gaming, and Content Creation
+
+# ────────────────────────────────────────────────────────────────────────────────
+# WORKSPACE DEFINITIONS
+# ────────────────────────────────────────────────────────────────────────────────
+set {
+    $ws1  "1:Browser"
+    $ws2  "2:Terminal"
+    $ws3  "3:Gaming"
+    $ws4  "4:Streaming"
+    $ws5  "5:Photo"
+    $ws6  "6:Media"
+    $ws7  "7:Comm"
+    $ws8  "8:Music"
+    $ws9  "9:Files"
+    $ws10 "10:Misc"
+}
+
+# ────────────────────────────────────────────────────────────────────────────────
+# WORKSPACE KEYBINDINGS
+# ────────────────────────────────────────────────────────────────────────────────
+bindsym {
+    # Switch to workspace
+    $mod+1 workspace number $ws1
+    $mod+2 workspace number $ws2
+    $mod+3 workspace number $ws3
+    $mod+4 workspace number $ws4
+    $mod+5 workspace number $ws5
+    $mod+6 workspace number $ws6
+    $mod+7 workspace number $ws7
+    $mod+8 workspace number $ws8
+    $mod+9 workspace number $ws9
+    $mod+0 workspace number $ws10
+    
+    # Move window to workspace
+    $mod+Shift+1 move container to workspace number $ws1
+    $mod+Shift+2 move container to workspace number $ws2
+    $mod+Shift+3 move container to workspace number $ws3
+    $mod+Shift+4 move container to workspace number $ws4
+    $mod+Shift+5 move container to workspace number $ws5
+    $mod+Shift+6 move container to workspace number $ws6
+    $mod+Shift+7 move container to workspace number $ws7
+    $mod+Shift+8 move container to workspace number $ws8
+    $mod+Shift+9 move container to workspace number $ws9
+    $mod+Shift+0 move container to workspace number $ws10
+}
+
+# ────────────────────────────────────────────────────────────────────────────────
+# APPLICATION ASSIGNMENTS
+# ────────────────────────────────────────────────────────────────────────────────
+# Automatically assign applications to specific workspaces
+
+# Workspace 1: Browser
+assign [class="Brave-browser"] $ws1
+assign [class="Firefox"] $ws1
+assign [class="Chromium"] $ws1
+
+# Workspace 2: Terminal/Development
+assign [class="Ghostty"] $ws2
+assign [class="Alacritty"] $ws2
+assign [class="Kate"] $ws2
+assign [class="Code"] $ws2
+
+# Workspace 3: Gaming
+assign [class="Steam"] $ws3
+assign [class="lutris"] $ws3
+assign [class="heroic"] $ws3
+
+# Workspace 4: Streaming
+assign [class="obs"] $ws4
+assign [app_id="com.obsproject.Studio"] $ws4
+
+# Workspace 5: Photography
+assign [class="darktable"] $ws5
+assign [class="Gimp"] $ws5
+assign [class="digikam"] $ws5
+assign [class="Krita"] $ws5
+
+# Workspace 6: Media
+assign [class="kdenlive"] $ws6
+assign [class="DaVinci"] $ws6
+
+# Workspace 7: Communication
+assign [class="discord"] $ws7
+assign [class="Discord"] $ws7
+assign [class="Element"] $ws7
+
+# Workspace 8: Music
+assign [class="Spotify"] $ws8
+assign [class="Ardour"] $ws8
+
+# Workspace 9: Files
+assign [class="Thunar"] $ws9
+assign [class="Dolphin"] $ws9
+
+# ────────────────────────────────────────────────────────────────────────────────
+# WORKSPACE DESCRIPTIONS
+# ────────────────────────────────────────────────────────────────────────────────
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │                         WEHTTAMSNAPS WORKSPACES                              │
+# ├─────────────────────────────────────────────────────────────────────────────┤
+# │  1. Browser     - Firefox, Brave - Web browsing                            │
+# │  2. Terminal    - Ghostty, Kate - Development                              │
+# │  3. Gaming      - Steam, games - Pre-configured for RX 580                │
+# │  4. Streaming   - OBS Studio - Recording/streaming                         │
+# │  5. Photography - GIMP, Darktable, Krita - Photo workflow                 │
+# │  6. Media       - Video editing, composites                                │
+# │  7. Communication - Discord, social media                                  │
+# │  8. Music       - Spotify, audio production                                │
+# │  9. Files       - Thunar, file management                                  │
+# │  10. Misc       - Overflow workspace                                       │
+# └─────────────────────────────────────────────────────────────────────────────┘

@@ -1,0 +1,74 @@
+# ════════════════════════════════════════════════════════════════════════════════
+# WEHTTAMSNAPS CYBERPUNK THEME
+# ════════════════════════════════════════════════════════════════════════════════
+# Color palette inspired by Cyberpunk 2077 and Night City aesthetics
+# Primary: Cyan #00ffd1 | Secondary: Blue #3b82ff | Accent: Magenta #ff5af1
+
+# ────────────────────────────────────────────────────────────────────────────────
+# COLOR VARIABLES
+# ────────────────────────────────────────────────────────────────────────────────
+# WehttamSnaps Cyberpunk Palette
+set $cyan           #00ffd1
+set $blue           #3b82ff
+set $magenta        #ff5af1
+set $dark_purple    #1a1a3a
+set $black          #0a0a1a
+set $surface        #0c1017
+set $error          #b32d2d
+set $warning        #f59e0b
+set $success        #10b981
+
+# Material Design 3 Alternative Palette
+set $primary        #c4a82e
+set $on_primary     #0e1015
+set $secondary      #d14358
+set $tertiary       #00a66c
+set $on_surface     #5c8ac4
+set $outline        #45a0d6
+
+# ────────────────────────────────────────────────────────────────────────────────
+# WINDOW COLORS
+# ────────────────────────────────────────────────────────────────────────────────
+# class                 border      backgr.     text        indicator   child_border
+client.focused          $cyan       $surface    $cyan       $magenta    $cyan
+client.focused_inactive $blue       $surface    $blue       $dark_purple $dark_purple
+client.unfocused        $dark_purple $black      #5a6080    $dark_purple $dark_purple
+client.urgent           $error      $surface    #ffffff     $error       $error
+client.placeholder      $surface    $surface    $on_surface $surface    $surface
+client.background       $black
+
+# ────────────────────────────────────────────────────────────────────────────────
+# APPEARANCE SETTINGS
+# ────────────────────────────────────────────────────────────────────────────────
+# Apply GTK theming
+exec_always ~/.config/sway/scripts/import-gsettings
+
+# Inner/outer gaps
+gaps inner 2
+gaps outer 2
+
+# Hide titlebar on windows (pixel border only)
+default_border pixel 2
+
+# Default font
+font pango:JetBrainsMono Nerd Font 10
+
+# Thin borders for single windows
+smart_borders on
+
+# Set wallpaper (using azote for wallpaper management)
+exec ~/.azotebg
+
+# ────────────────────────────────────────────────────────────────────────────────
+# TITLE FORMAT
+# ────────────────────────────────────────────────────────────────────────────────
+for_window [shell="xdg_shell"] title_format "%title (%app_id)"
+for_window [shell="x_wayland"] title_format "%class - %title"
+
+# ────────────────────────────────────────────────────────────────────────────────
+# STATUS BAR
+# ────────────────────────────────────────────────────────────────────────────────
+# Using Waybar as status bar (configured separately)
+# bar {
+#     swaybar_command waybar
+# }

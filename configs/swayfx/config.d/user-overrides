@@ -1,0 +1,49 @@
+# ╔═══════════════════════════════════════════════════════════════════════════╗
+# ║                         USER OVERRIDES                                     ║
+# ║                     WehttamSnaps-SwayFx Configuration                      ║
+# ╚═══════════════════════════════════════════════════════════════════════════╝
+#
+# This file is for your personal customizations.
+# It will NOT be overwritten when you update WehttamSnaps-SwayFx.
+#
+# Add your custom keybindings, startup programs, and any other
+# modifications you want to persist across updates.
+#
+# ─────────────────────────────────────────────────────────────────────────────
+# EXAMPLES
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Custom Keybindings
+# ──────────────────
+# bindsym $mod+Shift+N exec notify-send "Hello" "Custom notification"
+# bindsym $mod+Ctrl+L exec ~/.config/sway/scripts/custom-lock.sh
+# bindsym $mod+Alt+P exec playerctl play-pause
+
+# Custom Startup Programs
+# ────────────────────────
+# exec --no-startup-id your-program
+# exec --no-startup-id /path/to/script.sh
+
+# Custom Window Rules
+# ────────────────────
+# for_window [app_id="your-app"] floating enable
+# for_window [title=".*Editor.*"] move to workspace 2
+
+# Custom Environment Variables
+# ─────────────────────────────
+# set $my_custom_var "value"
+
+# Custom Output Configuration
+# ────────────────────────────
+# output HDMI-A-1 resolution 1920x1080 position 1920,0
+
+# Custom Input Configuration
+# ───────────────────────────
+# input type:keyboard xkb_layout us,de
+# input type:keyboard xkb_options grp:win_space_toggle
+
+# ─────────────────────────────────────────────────────────────────────────────
+# YOUR CUSTOMIZATIONS BELOW
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Add your customizations here...
