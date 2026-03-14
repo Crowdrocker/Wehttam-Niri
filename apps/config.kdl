@@ -1,0 +1,750 @@
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║   WehttamSnaps — Niri Compositor Config                         ║
+// ║   Author : Matthew (GitHub: Crowdrocker)                        ║
+// ║   Twitch / YouTube : WehttamSnaps                               ║
+// ║   Hardware: Dell XPS 8700 · i7-4790 · AMD RX 580 · 16GB        ║
+// ║   Display : 1920x1080 @ 60Hz                                    ║
+// ╚══════════════════════════════════════════════════════════════════╝
+//
+// Workspace map:
+//   1 Browser  2 Dev/Terminal  3 Gaming  4 Streaming
+//   5 Photo    6 Media         7 Comms   8 Audio   9 Files  10 Misc
+//
+// Sound system: /usr/local/bin/sound-system  (JARVIS + iDroid adaptive)
+// JARVIS NLP:   /usr/local/bin/jarvis
+// JARVIS menu:  /usr/local/bin/jarvis-menu
+
+
+// ══════════════════════════════════════════════════════════════════
+// INPUT
+// ══════════════════════════════════════════════════════════════════
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            // Uncomment and set your variant if needed:
+            // variant "intl"
+        }
+        // Repeat rate / delay
+        repeat-delay 400
+        repeat-rate 30
+    }
+
+    touchpad {
+        tap
+        natural-scroll
+        // accel-speed 0.2
+    }
+
+    mouse {
+        // accel-speed 0.0
+    }
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// OUTPUT — 1920x1080 @ 60Hz
+// ══════════════════════════════════════════════════════════════════
+
+// Output confirmed via `niri msg outputs`
+output "DP-2" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=0 y=0
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// LAYOUT
+// ══════════════════════════════════════════════════════════════════
+
+layout {
+    // Gap between windows and screen edges (px)
+    gaps 8
+
+    // Center focus column when it is the only one
+    center-focused-column "never"
+
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    default-column-width { proportion 0.5; }
+
+    focus-ring {
+        // Thin cyan ring matching WehttamSnaps palette
+        width 2
+        active-color "#00ffd1"
+        inactive-color "#1a1430"
+    }
+
+    border {
+        off
+    }
+
+    // Shadow under floating windows
+    shadow {
+        on
+        color "#00ffd133"
+    }
+
+    struts {
+        // Leave room for Noctalia Shell bar (adjust to your bar height)
+        // top 36
+        // bottom 0
+    }
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// ANIMATIONS — tuned for RX 580 / i7-4790 at 60 Hz
+// ══════════════════════════════════════════════════════════════════
+
+animations {
+    // Master switch — gaming mode toggle disables these via script
+    // (toggle-gamemode.sh writes to a flag file and reloads config)
+
+    workspace-switch {
+        spring damping-ratio=1.0 stiffness=1000 epsilon=0.0001
+    }
+
+    window-open {
+        duration-ms 150
+        curve "ease-out-expo"
+    }
+
+    window-close {
+        duration-ms 100
+        curve "ease-in"
+    }
+
+    window-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    window-resize {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    horizontal-view-movement {
+        spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
+    }
+
+    config-notification-open-close {
+        spring damping-ratio=0.6 stiffness=1000 epsilon=0.001
+    }
+
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
+    }
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// CURSOR
+// ══════════════════════════════════════════════════════════════════
+
+cursor {
+    // Recommended dark cursor for dark theme
+    xcursor-theme "Bibata-Modern-Classic"
+    xcursor-size 24
+
+    // Hide cursor after inactivity
+    hide-after-inactive-ms 5000
+    hide-when-typing
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// SCREENSHOT
+// ══════════════════════════════════════════════════════════════════
+
+screenshot-path "~/Pictures/Screenshots/screenshot-%Y-%m-%d-%H-%M-%S.png"
+
+
+// ══════════════════════════════════════════════════════════════════
+// ENVIRONMENT VARIABLES
+// ══════════════════════════════════════════════════════════════════
+
+environment {
+    // Force Wayland for all apps
+    NIXOS_OZONE_WL "1"
+    GDK_BACKEND "wayland,x11"
+    QT_QPA_PLATFORM "wayland;xcb"
+    SDL_VIDEODRIVER "wayland"
+    CLUTTER_BACKEND "wayland"
+
+    // AMD RX 580 Mesa/RADV performance tweaks
+    RADV_PERFTEST "aco"
+    AMD_VULKAN_ICD "RADV"
+    MESA_VK_WSI_PRESENT_MODE "mailbox"
+
+    // Java apps on Wayland
+    _JAVA_AWT_WM_NONREPARENTING "1"
+
+    // XDG
+    XDG_SESSION_TYPE "wayland"
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_DESKTOP "niri"
+
+    // Theming
+    GTK_THEME "adw-gtk3-dark"
+    XCURSOR_THEME "Bibata-Modern-Classic"
+    XCURSOR_SIZE "24"
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// PREFER-NO-CSD (server-side decorations)
+// ══════════════════════════════════════════════════════════════════
+
+prefer-no-csd
+
+
+// ══════════════════════════════════════════════════════════════════
+// WINDOW RULES
+// ══════════════════════════════════════════════════════════════════
+
+// ── Ghostty terminal ────────────────────────────────────────────
+window-rule {
+    match app-id="com.mitchellh.ghostty"
+    default-column-width { proportion 0.5; }
+    open-on-workspace "2"
+}
+
+// ── Brave browser ───────────────────────────────────────────────
+window-rule {
+    match app-id="brave-browser"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "1"
+}
+
+// ── Firefox ─────────────────────────────────────────────────────
+window-rule {
+    match app-id="firefox"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "1"
+}
+
+// ── Thunar file manager ─────────────────────────────────────────
+window-rule {
+    match app-id="thunar"
+    default-column-width { proportion 0.5; }
+    open-on-workspace "9"
+}
+
+// ── Dolphin file manager ─────────────────────────────────────────
+window-rule {
+    match app-id="org.kde.dolphin"
+    default-column-width { proportion 0.5; }
+    open-on-workspace "9"
+}
+
+// ── Kate text editor ────────────────────────────────────────────
+window-rule {
+    match app-id="org.kde.kate"
+    default-column-width { proportion 0.66667; }
+    open-on-workspace "2"
+}
+
+// ── OBS Studio ──────────────────────────────────────────────────
+window-rule {
+    match app-id="com.obsproject.Studio"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "4"
+}
+
+// ── Discord ─────────────────────────────────────────────────────
+window-rule {
+    match app-id="discord"
+    default-column-width { proportion 0.5; }
+    open-on-workspace "7"
+}
+
+// ── Spotify ─────────────────────────────────────────────────────
+window-rule {
+    match app-id="spotify"
+    default-column-width { proportion 0.5; }
+    open-on-workspace "8"
+}
+
+// ── Steam main window ────────────────────────────────────────────
+window-rule {
+    match app-id="steam"
+    default-column-width { proportion 0.4; }
+    open-on-workspace "3"
+}
+
+// ── Steam games (full column) ────────────────────────────────────
+// MPV media player window rules
+window-rule {
+    match app-id="mpv"
+    open-floating true
+    default-floating-position x=100 y=100
+    default-column-width { proportion 0.5; }
+}
+
+// ── Darktable ────────────────────────────────────────────────────
+window-rule {
+    match app-id="darktable"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "5"
+}
+
+// ── GIMP ─────────────────────────────────────────────────────────
+window-rule {
+    match app-id="gimp"
+    default-column-width { proportion 0.66667; }
+    open-on-workspace "5"
+}
+
+// ── DigiKam ──────────────────────────────────────────────────────
+window-rule {
+    match app-id="org.kde.digikam"
+    default-column-width { proportion 1.0; }
+    open-on-workspace "5"
+}
+
+// ── Krita ────────────────────────────────────────────────────────
+window-rule {
+    match app-id="krita"
+    default-column-width { proportion 0.66667; }
+    open-on-workspace "5"
+}
+
+// ── Lutris ───────────────────────────────────────────────────────
+window-rule {
+    match app-id="lutris"
+    default-column-width { proportion 0.4; }
+    open-on-workspace "3"
+}
+
+// ── Mod Organizer 2 (Wine/Proton) ────────────────────────────────
+window-rule {
+    match title="Mod Organizer"
+    open-floating true
+    default-column-width { proportion 0.66667; }
+    open-on-workspace "3"
+}
+
+// ── pavucontrol / qpwgraph (audio routing) ───────────────────────
+window-rule {
+    match app-id="pavucontrol"
+    open-floating true
+    default-floating-position x=200 y=150
+}
+window-rule {
+    match app-id="org.rncbc.qpwgraph"
+    open-floating true
+    default-column-width { proportion 0.66667; }
+    open-on-workspace "8"
+}
+
+// ── rofi (always floating) ───────────────────────────────────────
+window-rule {
+    match app-id="rofi"
+    open-floating true
+}
+
+// ── yad dialogs (KeyHints) ───────────────────────────────────────
+window-rule {
+    match app-id="yad"
+    open-floating true
+}
+
+// ── Welcome screen ───────────────────────────────────────────────
+window-rule {
+    match title="WehttamSnaps"
+    open-floating true
+    default-floating-position x=200 y=100
+}
+
+// ── ProtonUp-Qt ──────────────────────────────────────────────────
+window-rule {
+    match app-id="net.davidotek.pupgui2"
+    open-floating true
+}
+
+// ── Polkit / authentication dialogs ──────────────────────────────
+window-rule {
+    match app-id="polkit-gnome-authentication-agent-1"
+    open-floating true
+}
+window-rule {
+    match app-id="org.gnome.polkit"
+    open-floating true
+}
+
+// ── Screenshot UI (niri built-in) ────────────────────────────────
+window-rule {
+    match is-focused=false
+    opacity 0.95
+}
+
+
+// ══════════════════════════════════════════════════════════════════
+// AUTOSTART
+// ══════════════════════════════════════════════════════════════════
+
+spawn-at-startup "dbus-update-activation-environment" "--systemd" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+spawn-at-startup "systemctl" "--user" "import-environment" "WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP"
+
+// Polkit agent (authentication popups)
+spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
+
+// Noctalia Shell (Quickshell bar)
+// spawn-at-startup "quickshell" "-c" "/home/wehttamsnaps/.config/Noctalia-Shell"
+
+// Waybar fallback (comment out when Noctalia is working)
+spawn-at-startup "waybar"
+
+// Wallpaper (swww)
+spawn-at-startup "swww-daemon"
+spawn-at-startup "sh" "-c" "sleep 1 && swww img ~/.config/wehttamsnaps/wallpapers/current.jpg --transition-type fade --transition-duration 1"
+
+// Notification daemon
+spawn-at-startup "dunst"
+
+// PipeWire (usually started by systemd — uncomment if not)
+// spawn-at-startup "pipewire"
+// spawn-at-startup "wireplumber"
+
+// Clipboard manager (wl-clip-persist keeps clipboard alive)
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
+// XDG desktop portal
+spawn-at-startup "xdg-desktop-portal-gnome"
+
+// J.A.R.V.I.S. startup greeting (time-aware: morning / afternoon / evening)
+spawn-at-startup "sh" "-c" "sleep 2 && /usr/local/bin/sound-system startup"
+
+// Welcome screen (first-boot or every login — comment out after first run)
+spawn-at-startup "sh" "-c" "sleep 3 && python3 ~/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py"
+
+
+// ══════════════════════════════════════════════════════════════════
+// KEYBINDINGS
+// ══════════════════════════════════════════════════════════════════
+//
+// Mod = Super (Windows key)
+// All sound triggers call /usr/local/bin/sound-system
+// All JARVIS actions call /usr/local/bin/jarvis
+
+binds {
+
+    // ── Noctalia Shell / Quickshell ─────────────────────────────
+    // Super+Space  → app launcher (rofi drun with WehttamSnaps theme)
+    Mod+Space { spawn "rofi" "-show" "drun"; }
+
+    // Super+V  → clipboard history
+    Mod+V { spawn "sh" "-c" "cliphist list | rofi -dmenu -theme ~/.config/rofi/themes/wehttamsnaps.rasi -p 'Clipboard ❯' | cliphist decode | wl-copy"; }
+
+    // Super+M  → task manager (btop in Ghostty)
+    Mod+M { spawn "ghostty" "-e" "btop"; }
+
+    // Super+N  → notification center (dunstctl)
+    Mod+N { spawn "dunstctl" "context"; }
+
+    // Super+X  → power menu
+    Mod+X { spawn "sh" "-c" "~/.config/wehttamsnaps/scripts/power-menu.sh"; }
+
+    // Super+Y  → wallpaper browser
+    Mod+Y { spawn "sh" "-c" "~/.config/wehttamsnaps/scripts/wallpaper-browser.sh"; }
+
+    // Super+Comma  → settings
+    Mod+Comma { spawn "gnome-control-center"; }
+
+    // ── Core Applications ────────────────────────────────────────
+    // Super+Enter → Ghostty terminal + JARVIS sound
+    Mod+Return {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && ghostty";
+    }
+
+    // Super+B → Brave browser + JARVIS sound
+    Mod+B {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && brave";
+    }
+
+    // Super+F → Thunar file manager + JARVIS sound
+    Mod+F {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && thunar";
+    }
+
+    // Super+E → Kate editor + JARVIS sound
+    Mod+E {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && kate";
+    }
+
+    // Super+O → OBS Studio + JARVIS broadcast-ready sound
+    Mod+O {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && obs";
+    }
+
+    // Super+P → Spotify
+    Mod+P {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && spotify";
+    }
+
+    // Super+D → Rofi app launcher (alias for Super+Space)
+    Mod+D { spawn "rofi" "-show" "drun"; }
+
+    // Super+H → KeyHints cheatsheet
+    Mod+H { spawn "sh" "-c" "~/.config/wehttamsnaps/scripts/KeyHints.sh"; }
+
+    // Super+Shift+W → Welcome screen
+    Mod+Shift+W {
+        spawn "python3" "/home/wehttamsnaps/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py";
+    }
+
+    // Super+J → JARVIS interactive terminal
+    Mod+J {
+        spawn "ghostty" "-e" "/usr/local/bin/jarvis" "interactive";
+    }
+
+    // Super+Slash → J.A.R.V.I.S. free command input via rofi
+    Mod+Slash {
+        spawn "/usr/local/bin/jarvis-menu" "command";
+    }
+
+    // ── J.A.R.V.I.S. Rofi Menu ──────────────────────────────────
+    // Super+Alt+J → full JARVIS command center menu
+    Mod+Alt+J { spawn "/usr/local/bin/jarvis-menu" "main"; }
+
+    // ── Webapp Launchers ─────────────────────────────────────────
+    // Super+Ctrl+Y → YouTube webapp
+    Mod+Ctrl+Y {
+        spawn "sh" "-c" "brave --app=https://youtube.com --profile-directory='YouTube'";
+    }
+
+    // Super+Ctrl+T → Twitch webapp
+    Mod+Ctrl+T {
+        spawn "sh" "-c" "brave --app=https://twitch.tv --profile-directory='Twitch'";
+    }
+
+    // Super+Ctrl+S → Spotify webapp
+    Mod+Ctrl+S {
+        spawn "sh" "-c" "brave --app=https://open.spotify.com --profile-directory='Spotify'";
+    }
+
+    // Super+Ctrl+D → Discord webapp
+    Mod+Ctrl+D {
+        spawn "sh" "-c" "brave --app=https://discord.com/app --profile-directory='Discord'";
+    }
+
+    // ── Gaming ───────────────────────────────────────────────────
+    // Super+G → toggle gaming mode (iDroid on/off + sound + perf profile)
+    Mod+G {
+        spawn "/usr/local/bin/sound-system" "gaming-toggle";
+    }
+
+    // Super+Shift+S → Steam with iDroid launch sound
+    Mod+Shift+S {
+        spawn "sh" "-c" "/usr/local/bin/sound-system steam-launch && steam";
+    }
+
+    // Super+Alt+L → Lutris
+    Mod+Alt+L {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && lutris";
+    }
+
+    // Super+Alt+P → ProtonUp-Qt (manage Proton-GE versions)
+    Mod+Alt+P {
+        spawn "protonup-qt";
+    }
+
+    // ── Photography ──────────────────────────────────────────────
+    // Super+Shift+P → launch full photography workspace
+    Mod+Shift+P {
+        spawn "sh" "-c" "/usr/local/bin/jarvis" "photography";
+    }
+
+    // ── Window Management ────────────────────────────────────────
+    // Super+Q → close window + JARVIS sound
+    Mod+Q {
+        spawn "sh" "-c" "/usr/local/bin/sound-system window-close";
+        close-window;
+    }
+
+    // Super+Shift+Q → force kill window
+    Mod+Shift+Q { close-window; }
+
+    // Focus movement (arrow keys)
+    Mod+Left  { focus-column-left; }
+    Mod+Right { focus-column-right; }
+    Mod+Up    { focus-window-up; }
+    Mod+Down  { focus-window-down; }
+
+    // Focus movement (vim hjkl — semicolon = l to avoid conflicts)
+    Mod+Alt+H   { focus-column-left; }
+    Mod+J       { focus-window-down; }
+    Mod+K       { focus-window-up; }
+    Mod+Semicolon { focus-column-right; }
+
+    // Move window (arrow keys)
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Down  { move-window-down; }
+
+    // Move window (vim)
+    Mod+Ctrl+H { move-column-left; }
+    Mod+Ctrl+Semicolon { move-column-right; }
+    Mod+Ctrl+K { move-window-up; }
+    Mod+Ctrl+J { move-window-down; }
+
+    // Resize column width
+    Mod+Minus       { set-column-width "-10%"; }
+    Mod+Equal       { set-column-width "+10%"; }
+    Mod+Shift+Minus { set-window-height "-10%"; }
+    Mod+Shift+Equal { set-window-height "+10%"; }
+
+    // Preset width / height cycling
+    Mod+R       { switch-preset-column-width; }
+    Mod+Shift+R { switch-preset-window-height; }
+
+    // Maximize column (fill workspace width)
+    Mod+F { maximize-column; }
+
+    // Toggle fullscreen
+    Mod+Shift+F { fullscreen-window; }
+
+    // Toggle floating
+    Mod+Ctrl+V { toggle-window-floating; }
+
+    // Switch focus floating ↔ tiled
+    Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+
+    // Center current column
+    Mod+Alt+C { center-column; }
+
+    // Consume window from right column into tab / expel to right
+    Mod+BracketLeft  { consume-window-into-column; }
+    Mod+BracketRight { expel-window-from-column; }
+
+    // Toggle tabbed display for column
+    Mod+W { toggle-column-tabbed-display; }
+
+    // ── Workspaces ───────────────────────────────────────────────
+    Mod+1 { focus-workspace 1; spawn "/usr/local/bin/sound-system" "workspace" "1"; }
+    Mod+2 { focus-workspace 2; spawn "/usr/local/bin/sound-system" "workspace" "2"; }
+    Mod+3 { focus-workspace 3; spawn "/usr/local/bin/sound-system" "workspace" "3"; }
+    Mod+4 { focus-workspace 4; spawn "/usr/local/bin/sound-system" "workspace" "4"; }
+    Mod+5 { focus-workspace 5; spawn "/usr/local/bin/sound-system" "workspace" "5"; }
+    Mod+6 { focus-workspace 6; spawn "/usr/local/bin/sound-system" "workspace" "6"; }
+    Mod+7 { focus-workspace 7; spawn "/usr/local/bin/sound-system" "workspace" "7"; }
+    Mod+8 { focus-workspace 8; spawn "/usr/local/bin/sound-system" "workspace" "8"; }
+    Mod+9 { focus-workspace 9; spawn "/usr/local/bin/sound-system" "workspace" "9"; }
+    Mod+0 { focus-workspace 10; spawn "/usr/local/bin/sound-system" "workspace" "10"; }
+
+    // Move focused window to workspace
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+Shift+0 { move-window-to-workspace 10; }
+
+    // Next / previous workspace
+    Mod+Page_Down { focus-workspace-down; }
+    Mod+Page_Up   { focus-workspace-up; }
+    Mod+WheelScrollDown cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp   cooldown-ms=150 { focus-workspace-up; }
+
+    // Move column to adjacent workspace
+    Mod+Shift+Page_Down { move-column-to-workspace-down; }
+    Mod+Shift+Page_Up   { move-column-to-workspace-up; }
+
+    // ── Screenshots ──────────────────────────────────────────────
+    // Print → full screenshot + JARVIS sound
+    Print {
+        spawn "sh" "-c" "grim ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png && /usr/local/bin/sound-system screenshot && notify-send 'J.A.R.V.I.S.' 'Screenshot captured, sir'";
+    }
+
+    // Super+Print → region screenshot (slurp to select)
+    Mod+Print {
+        spawn "sh" "-c" "grim -g \"$(slurp)\" ~/Pictures/Screenshots/screenshot-$(date +%Y%m%d-%H%M%S).png && /usr/local/bin/sound-system screenshot";
+    }
+
+    // Alt+Print → focused window screenshot
+    Alt+Print { screenshot-window; }
+
+    // Ctrl+Print → built-in niri screenshot UI
+    Ctrl+Print { screenshot; }
+
+    // Super+Shift+E → photo export workflow + JARVIS sound
+    Mod+Shift+E {
+        spawn "sh" "-c" "/usr/local/bin/sound-system photo-export";
+    }
+
+    // ── Audio Controls ───────────────────────────────────────────
+    // Volume keys → sound-system (plays JARVIS voice feedback)
+    XF86AudioMute        { spawn "/usr/local/bin/sound-system" "mute"; }
+    XF86AudioRaiseVolume { spawn "/usr/local/bin/sound-system" "volume-up"; }
+    XF86AudioLowerVolume { spawn "/usr/local/bin/sound-system" "volume-down"; }
+    XF86AudioMicMute     { spawn "/usr/local/bin/sound-system" "mic-mute"; }
+
+    // ── Media Controls ───────────────────────────────────────────
+    XF86AudioPlay { spawn "playerctl" "play-pause"; }
+    XF86AudioNext { spawn "playerctl" "next"; }
+    XF86AudioPrev { spawn "playerctl" "previous"; }
+    XF86AudioStop { spawn "playerctl" "stop"; }
+
+    // ── Brightness ───────────────────────────────────────────────
+    XF86MonBrightnessUp   { spawn "brightnessctl" "set" "+5%"; }
+    XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+    // ── System ───────────────────────────────────────────────────
+    // Super+Alt+L → lock screen
+    Mod+Alt+L {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification && swaylock -f -c 07050f";
+    }
+
+    // Ctrl+Alt+Delete → quit Niri (emergency exit)
+    Ctrl+Alt+Delete { quit; }
+
+    // Super+Shift+Slash → Niri built-in hotkey overlay
+    Mod+Shift+Slash { show-hotkey-overlay; }
+
+    // Super+Shift+BackSlash → reload Niri config + JARVIS sound
+    Mod+Shift+BackSlash {
+        spawn "sh" "-c" "/usr/local/bin/sound-system notification";
+        reload-config;
+    }
+
+    // Super+Shift+PowerOff → power off monitors
+    Mod+Shift+P { spawn "sh" "-c" "wlopm --off '*'"; }
+
+}
+// ── End of binds ─────────────────────────────────────────────────
+
+
+// ══════════════════════════════════════════════════════════════════
+// NAMED WORKSPACES
+// ══════════════════════════════════════════════════════════════════
+
+workspace "Browser"
+workspace "Dev"
+workspace "Gaming"
+workspace "Streaming"
+workspace "Photo"
+workspace "Media"
+workspace "Comms"
+workspace "Audio"
+workspace "Files"
+workspace "Misc"
