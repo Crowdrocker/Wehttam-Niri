@@ -1,0 +1,23 @@
+[package]
+name = "mo2-linux-helper"
+version = "1.0.0"
+description = "Mod Organizer 2 Linux Helper for WehttamSnaps"
+authors = ["Matthew (WehttamSnaps)"]
+license = "MIT"
+repository = "https://github.com/Crowdrocker/wehttamsnaps-niri"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.5", features = ["shell-open"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+dirs = "5.0"
+which = "5.0"
+walkdir = "2.4"
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
