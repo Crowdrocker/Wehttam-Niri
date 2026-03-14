@@ -1,0 +1,355 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - WINDOW RULES CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// Window rules control how applications behave when opened
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// FLOATING WINDOWS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── System Tools ───
+window-rule {
+    match app-id="pavucontrol"
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match app-id="qpwgraph"
+    open-floating true
+    open-focused true
+}
+
+window-rule {
+    match app-id="blueman-manager"
+    open-floating true
+}
+
+window-rule {
+    match app-id="nm-connection-editor"
+    open-floating true
+}
+
+window-rule {
+    match app-id="gnome-calculator"
+    open-floating true
+}
+
+window-rule {
+    match app-id="gnome-control-center"
+    open-floating true
+}
+
+// ─── File Pickers & Dialogs ───
+window-rule {
+    match app-id="xdg-desktop-portal-gtk"
+    open-floating true
+}
+
+window-rule {
+    match title="File Upload"
+    open-floating true
+}
+
+window-rule {
+    match title="Save As"
+    open-floating true
+}
+
+window-rule {
+    match title="Open Files"
+    open-floating true
+}
+
+// ─── Applications with dialogs ───
+window-rule {
+    match app-id="firefox" title="^Picture-in-Picture$"
+    open-floating true
+    min-width 400
+    min-height 225
+}
+
+window-rule {
+    match app-id="firefox" title="^Extension"
+    open-floating true
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// BROWSERS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Firefox - Workspace 1 (Browser)
+window-rule {
+    match app-id="firefox"
+    open-on-workspace "browser"
+    open-maximized true
+}
+
+// Brave - Workspace 1
+window-rule {
+    match app-id="brave-browser"
+    open-on-workspace "browser"
+}
+
+// Chrome - Workspace 1
+window-rule {
+    match app-id="google-chrome"
+    open-on-workspace "browser"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GAMING
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Steam - Workspace 3 (Gaming)
+window-rule {
+    match app-id="steam"
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="steam" title="^Steam"
+    open-fullscreen true
+}
+
+// Steam Big Picture Mode
+window-rule {
+    match app-id="steam" title="Steam Big Picture Mode"
+    open-fullscreen true
+}
+
+// Lutris
+window-rule {
+    match app-id="lutris"
+    open-on-workspace "gaming"
+}
+
+// Heroic Games Launcher
+window-rule {
+    match app-id="heroic"
+    open-on-workspace "gaming"
+}
+
+// ProtonUp-Qt
+window-rule {
+    match app-id="protonup-qt"
+    open-floating true
+}
+
+// Games (common patterns)
+window-rule {
+    match title=".*Steam App:.*"
+    open-fullscreen true
+}
+
+window-rule {
+    match title="Cyberpunk 2077"
+    open-fullscreen true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match title="Fallout4"
+    open-fullscreen true
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match title="The Division 2"
+    open-fullscreen true
+    open-on-workspace "gaming"
+}
+
+// ─── Game launchers ───
+window-rule {
+    match app-id="battle.net.exe"
+    open-on-workspace "gaming"
+}
+
+window-rule {
+    match app-id="UbisoftConnect.exe"
+    open-on-workspace "gaming"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// STREAMING / OBS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// OBS Studio - Workspace 4 (Streaming)
+window-rule {
+    match app-id="obs"
+    open-on-workspace "streaming"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// PHOTOGRAPHY
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// GIMP - Workspace 5 (Photography)
+window-rule {
+    match app-id="gimp"
+    open-on-workspace "photography"
+}
+
+window-rule {
+    match app-id="gimp-2.10"
+    open-on-workspace "photography"
+}
+
+// Darktable
+window-rule {
+    match app-id="darktable"
+    open-on-workspace "photography"
+}
+
+// Krita
+window-rule {
+    match app-id="krita"
+    open-on-workspace "photography"
+}
+
+// Inkscape
+window-rule {
+    match app-id="inkscape"
+    open-on-workspace "photography"
+}
+
+// DigiKam
+window-rule {
+    match app-id="digikam"
+    open-on-workspace "photography"
+}
+
+// RawTherapee
+window-rule {
+    match app-id="rawtherapee"
+    open-on-workspace "photography"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// VIDEO EDITING
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// DaVinci Resolve
+window-rule {
+    match app-id="resolve"
+    open-on-workspace "media"
+}
+
+// Kdenlive
+window-rule {
+    match app-id="kdenlive"
+    open-on-workspace "media"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// COMMUNICATION
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Discord - Workspace 7 (Communication)
+window-rule {
+    match app-id="discord"
+    open-on-workspace "communication"
+}
+
+// Telegram
+window-rule {
+    match app-id="telegramdesktop"
+    open-on-workspace "communication"
+}
+
+// Slack
+window-rule {
+    match app-id="slack"
+    open-on-workspace "communication"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// MUSIC
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Spotify - Workspace 8 (Music)
+window-rule {
+    match app-id="spotify"
+    open-on-workspace "music"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// FILE MANAGERS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Thunar - Workspace 9 (Files)
+window-rule {
+    match app-id="thunar"
+    open-on-workspace "files"
+}
+
+// Dolphin
+window-rule {
+    match app-id="dolphin"
+    open-on-workspace "files"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// TERMINAL
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Ghostty - Workspace 2 (Terminal/Dev)
+window-rule {
+    match app-id="ghostty"
+    open-on-workspace "terminal"
+}
+
+// Kitty
+window-rule {
+    match app-id="kitty"
+    open-on-workspace "terminal"
+}
+
+// Alacritty
+window-rule {
+    match app-id="Alacritty"
+    open-on-workspace "terminal"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// DEVELOPMENT
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// VS Code
+window-rule {
+    match app-id="code"
+    open-on-workspace "terminal"
+}
+
+// Kate
+window-rule {
+    match app-id="kate"
+    open-on-workspace "terminal"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SCREEN SHARING / SCREEN RECORDING
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Screen share dialogs
+window-rule {
+    match app-id="xdg-desktop-portal-wlr"
+    open-floating true
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// EXCLUDED FROM SCREENSHOTS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Disable screenshot for sensitive windows (if needed)
+// window-rule {
+//     match app-id="some-sensitive-app"
+//     block-out-from "screencast"
+// }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF WINDOW RULES
+// ═══════════════════════════════════════════════════════════════════════════════

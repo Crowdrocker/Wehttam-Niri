@@ -1,462 +1,386 @@
-# Gaming Configuration - WehttamSnaps-SwayFx
+# WehttamSnaps Gaming Guide
 
-Complete guide for gaming on your WehttamSnaps workstation with AMD RX 580 optimizations.
+A comprehensive guide to gaming on the WehttamSnaps Niri setup, optimized for the AMD Radeon RX 580 and Arch Linux.
 
-## Gaming Mode Overview
+## Table of Contents
 
-WehttamSnaps-SwayFx includes an integrated Gaming Mode that:
+- [Hardware Overview](#hardware-overview)
+- [Driver Setup](#driver-setup)
+- [Gaming Optimizations](#gaming-optimizations)
+- [Steam & Proton](#steam--proton)
+- [GameMode Integration](#gamemode-integration)
+- [MO2 Modding](#mo2-modding)
+- [Troubleshooting](#troubleshooting)
 
-- Switches voice assistant from J.A.R.V.I.S. to iDroid
-- Disables SwayFx effects (blur, shadows) for maximum performance
-- Sets CPU governor to "performance"
-- Enables GameMode optimizations
-- Routes audio through gaming-optimized sinks
+## Hardware Overview
 
-Toggle Gaming Mode: `Super + Shift + G`
+This setup is optimized for the following hardware configuration:
 
-## AMD RX 580 Optimizations
+| Component | Specification |
+|-----------|--------------|
+| CPU | Intel Core i7-4790 (8 threads) @ 4.00 GHz |
+| GPU | AMD Radeon RX 580 Series |
+| RAM | 16GB DDR3 |
+| Display | 1920x1080 @ 60Hz |
+| Storage | 1TB SSD + 2x 120GB SSD |
 
-### Mesa Configuration
+The RX 580 is an excellent card for 1080p gaming on Linux, with mature AMDGPU drivers that offer excellent performance and stability.
 
-The AMD RX 580 works best with the RADV Vulkan driver. Set these environment variables:
+## Driver Setup
 
-```bash
-# Add to ~/.config/sway/config.d/env or /etc/environment
-export RADV_PERFTEST=gpl,nosam        # Enable GPL (good for older GPUs)
-export mesa_glthread=true              # Enable OpenGL threading
-export AMD_VULKAN_ICD=RADV             # Use RADV instead of AMDVLK
-```
+### AMDGPU Driver
 
-### Vulkan Drivers
-
-```bash
-# Install Vulkan drivers
-sudo pacman -S vulkan-radeon lib32-vulkan-radeon
-
-# Verify Vulkan support
-vulkaninfo | head -20
-```
-
-### ROCm for Compute (Optional)
-
-For compute workloads (some AI tools, compute shaders):
+The RX 580 uses the AMDGPU driver which is built into the Linux kernel. The necessary packages are:
 
 ```bash
-sudo pacman -S rocm-opencl-runtime opencl-mesa
+sudo pacman -S mesa vulkan-radeon lib32-mesa lib32-vulkan-radeon
 ```
 
-## Gaming Tools
+### Environment Variables
 
-### Steam
+The Niri configuration automatically sets these AMD-optimized environment variables:
+
+```bash
+# AMD Performance Tuning
+export RADV_PERFTEST="nocache,gt"
+export mesa_glthread=true
+
+# Vulkan Configuration
+export AMD_VULKAN_ICD=RADV
+export vk_icd_filenames=/usr/share/vulkan/icd.d/radeon_icd.x86_64.json:/usr/share/vulkan/icd.d/radeon_icd.i686.json
+```
+
+### Verifying Driver Installation
+
+Check that your GPU is properly recognized:
+
+```bash
+# Check OpenGL
+glxinfo | grep "OpenGL renderer"
+
+# Check Vulkan
+vulkaninfo | grep "deviceName"
+```
+
+You should see your AMD Radeon RX 580 listed.
+
+## Gaming Optimizations
+
+### GameMode
+
+GameMode optimizes your system for gaming by temporarily adjusting system settings:
+
+```bash
+# Install GameMode
+sudo pacman -S gamemode lib32-gamemode
+
+# Enable GameMode for a specific game
+gamemoderun %command%
+
+# Or use our toggle script
+~/.config/wehttamsnaps/scripts/toggle-gamemode.sh on
+```
+
+### MangoHud
+
+MangoHud provides an in-game overlay for performance monitoring:
+
+```bash
+# Install MangoHud
+sudo pacman -S mangohud lib32-mangohud
+
+# Run with MangoHud
+mangohud %command%
+```
+
+Configuration file: `~/.config/MangoHud/MangoHud.conf`
+
+```ini
+# Basic MangoHud config
+fps_limit=60
+vsync=1
+gpu_stats=1
+cpu_stats=1
+ram_stats=1
+frame_timing=1
+```
+
+### Gamescope
+
+Gamescope provides a nested gaming compositor ideal for games:
+
+```bash
+# Install Gamescope
+sudo pacman -S gamescope
+
+# Run with Gamescope
+gamescope -w 1920 -h 1080 -f -- %command%
+```
+
+### GOverlay
+
+GOverlay provides a GUI for configuring MangoHud and gamescope:
+
+```bash
+# Install GOverlay
+sudo pacman -S goverlay
+```
+
+## Steam & Proton
+
+### Installing Steam
 
 ```bash
 sudo pacman -S steam
 ```
 
-**Proton Configuration:**
-1. Steam → Settings → Steam Play
-2. Enable "Enable Steam Play for supported titles"
-3. Enable "Enable Steam Play for all other titles"
-4. Set Proton version to Proton-GE (see below)
+### Proton Configuration
 
-### Proton GE (Recommended)
+For Windows games, Steam's Proton compatibility layer is essential:
+
+1. Enable Proton for all titles: Steam > Settings > Steam Play > Enable Steam Play for all other titles
+2. Use Proton-GE for better compatibility
+
+### Installing Proton-GE
 
 ```bash
-# Install ProtonUp-Qt
+# Install ProtonUp-Qt (GUI for managing Proton versions)
 sudo pacman -S protonup-qt
 
-# Or use protonup CLI
-paru -S protonup
-protonup --download 8.26  # Latest GE-Proton
+# Or install manually
+yay -S proton-ge-custom-bin
 ```
 
-Proton GE includes:
-- Latest DXVK and VKD3D
-- Better game compatibility
-- Video codec support
-- Fixes for specific games
+### Recommended Proton Versions
 
-### Lutris
+| Game Type | Recommended Proton |
+|-----------|-------------------|
+| New AAA Games | Proton-GE (latest) |
+| Older Games | Proton 8.x |
+| Anti-Cheat Games | Proton Experimental |
+| Bethesda Games | Proton-GE with MO2 |
+
+### Steam Launch Options
+
+For optimal performance on RX 580:
 
 ```bash
-sudo pacman -S lutris wine
+# Standard gaming
+PROTON_ENABLE_NVAPI=1 %command%
 
-# Additional Wine dependencies
-sudo pacman -S --needed \
-  wine-gecko wine-mono \
-  winetricks \
-  giflib lib32-giflib \
-  libpng lib32-libpng \
-  libldap lib32-libldap \
-  gnutls lib32-gnutls \
-  mpg123 lib32-mpg123 \
-  openal lib32-openal \
-  v4l-utils lib32-v4l-utils \
-  libpulse lib32-libpulse \
-  libgpg-error lib32-libgpg-error \
-  alsa-plugins lib32-alsa-plugins \
-  alsa-lib lib32-alsa-lib \
-  libjpeg-turbo lib32-libjpeg-turbo \
-  sqlite lib32-sqlite \
-  libxcomposite lib32-libxcomposite \
-  libxinerama lib32-libxinerama
+# With MangoHud
+mangohud PROTON_ENABLE_NVAPI=1 %command%
+
+# With GameMode
+gamemoderun mangohud PROTON_ENABLE_NVAPI=1 %command%
+
+# Full optimization stack
+DXVK_STATE_CACHE_PATH=~/.cache/dxvk-cache gamemoderun mangohud %command%
 ```
 
-### Heroic Games Launcher
+## GameMode Integration
 
-For Epic Games Store and GOG:
+### Toggle Script
+
+The WehttamSnaps setup includes a GameMode toggle script:
 
 ```bash
-paru -S heroic-games-launcher-bin
-```
+# Toggle gaming mode
+~/.config/wehttamsnaps/scripts/toggle-gamemode.sh toggle
 
-### Gamescope
+# Enable gaming mode
+~/.config/wehttamsnaps/scripts/toggle-gamemode.sh on
 
-Gamescope provides a nested compositor ideal for gaming:
-
-```bash
-sudo pacman -S gamescope
-```
-
-**Benefits:**
-- Isolated gaming environment
-- Better frame pacing
-- VRR support
-- HDR support (experimental)
-- Resolution scaling
-
-**Usage:**
-```bash
-# Launch game in fullscreen gamescope
-gamescope -f -- %command%
-
-# With specific resolution
-gamescope -w 1920 -h 1080 -f -- %command%
-
-# With FPS limit
-gamescope -r 60 -- %command%
-```
-
-### MangoHud
-
-Performance overlay for games:
-
-```bash
-sudo pacman -S mangohud lib32-mangohud
-```
-
-**Configuration: `~/.config/MangoHud/MangoHud.conf`**
-
-```ini
-# Performance settings
-fps_limit=60
-vsync=0
-gl_vsync=0
-
-# Display settings
-fps
-frame_timing
-cpu_stats
-gpu_stats
-cpu_temp
-gpu_temp
-ram
-vram
-
-# Style
-font_size=18
-background_alpha=0.3
-position=top-left
-```
-
-**Usage:**
-```bash
-# Run any game with MangoHud
-mangohud ./game
-
-# In Steam launch options
-mangohud %command%
-```
-
-### GameMode
-
-System-wide gaming optimizations:
-
-```bash
-sudo pacman -S gamemode lib32-gamemode
-
-# Enable service
-systemctl --user enable --now gamemoded
+# Disable gaming mode
+~/.config/wehttamsnaps/scripts/toggle-gamemode.sh off
 
 # Check status
-gamemoded -s
+~/.config/wehttamsnaps/scripts/toggle-gamemode.sh status
 ```
 
-**Configuration: `~/.config/gamemode.ini`**
+### Keyboard Shortcut
 
-```ini
-[general]
-renice = 10
-ioprio = 0
+Press `Mod+G` (Super+G) to toggle GameMode from within Niri.
 
-[gpu]
-apply_gpu_optimisations = accept-responsibility
-gpu_device = 0
-amd_performance_level = high
+### What GameMode Does
 
-[cpu]
-park_cores = no
-pin_cores = no
+When enabled, GameMode:
 
-[supervisor]
-supervisor = systemd
+- Sets CPU governor to `performance`
+- Activates the GameMode daemon for CPU/core parking optimization
+- Switches JARVIS voice to iDroid (gaming persona)
+- Configures optimal AMDGPU settings
+- Increases process priority for games
 
-[custom]
-start = notify-send "GameMode" "Started"
-end = notify-send "GameMode" "Ended"
-```
+## MO2 Modding
 
-**Usage:**
-```bash
-# Run game with GameMode
-gamemoderun ./game
+### Mod Organizer 2 on Linux
 
-# In Steam launch options
-gamemoderun %command%
-```
+MO2 is essential for modding Bethesda games (Skyrim, Fallout). The WehttamSnaps MO2 Linux Helper provides a streamlined setup.
 
-## Recommended Launch Options
-
-### Steam Games
-
-For best performance on RX 580:
-
-```
-gamemoderun gamescope -w 1920 -h 1080 -f -r 60 -- mangohud %command%
-```
-
-**Breakdown:**
-- `gamemoderun` - Enables GameMode
-- `gamescope` - Isolated compositor
-- `-w 1920 -h 1080` - Target resolution
-- `-f` - Fullscreen
-- `-r 60` - FPS limit
-- `mangohud` - Performance overlay
-
-### For Different Game Types
-
-**Competitive/Esports (CS2, Valorant via Wine):**
-```
-gamescope -f -r 144 -- mangohud %command%
-```
-
-**Single-player (Cyberpunk, Witcher 3):**
-```
-gamescope -f -r 60 -- mangohud %command%
-```
-
-**Older games (Skyrim, Fallout):**
-```
-DXVK_STATE_CACHE_PATH=~/.cache/dxvk %command%
-```
-
-## Wine/Proton Tips
-
-### DXVK
-
-DXVK translates DirectX 9/10/11 to Vulkan:
+### MO2 Installation
 
 ```bash
-# Install DXVK
-sudo pacman -S dxvk lib32-dxvk
+# Install dependencies
+sudo pacman -S wine winetricks protontricks
 
-# Set up in Wine prefix
-WINEPREFIX=~/.wine setup_dxvk install
+# Clone MO2 setup (from AUR or manual)
+yay -S modorganizer2
+
+# Or use the MO2 Linux Helper
+~/.config/wehttamsnaps/mo2-helper/mo2-helper
 ```
-
-### VKD3D
-
-VKD3D translates DirectX 12 to Vulkan:
-
-```bash
-sudo pacman -S vkd3d lib32-vkd3d
-```
-
-### Wine Prefix Management
-
-```bash
-# Create 64-bit prefix
-WINEARCH=win64 WINEPREFIX=~/.wine-64 winecfg
-
-# Create 32-bit prefix (older games)
-WINEARCH=win32 WINEPREFIX=~/.wine-32 winecfg
-```
-
-## Modding with MO2
 
 ### MO2 Linux Helper
 
-Use the included MO2 Linux Helper (Tauri app) for managing Mod Organizer 2:
+The MO2 Linux Helper is a Tauri-based application that:
+
+- Manages MO2 installations
+- Configures Proton prefixes
+- Handles mod downloads and installations
+- Provides game-specific presets
+
+### Supported Games
+
+| Game | Proton Version | MO2 Compatible |
+|------|---------------|----------------|
+| Skyrim SE | Proton-GE | ✅ |
+| Skyrim AE | Proton-GE | ✅ |
+| Fallout 4 | Proton-GE | ✅ |
+| Fallout NV | Proton-GE | ✅ |
+| Oblivion | Proton-GE | ✅ |
+
+### MO2 Launch Options
+
+For Steam games with MO2:
 
 ```bash
-# Launch MO2 Helper
-~/.config/sway/scripts/mo2-helper
+# Steam launch option
+PROTON_USE_WINED3D=0 PROTON_NO_ESYNC=1 PROTON_NO_FSYNC=1 \
+WINE_FULLSCREEN_FSR=1 WINE_FULLSCREEN_FSR_STRENGTH=2 \
+~/.steam/steam/steamapps/common/Proton*/proton run ~/.config/mo2/skyrim/MO2/MO2.exe
 ```
-
-Features:
-- NXM link handling
-- Wine prefix management
-- Instance management
-- Load order backup
-
-### Manual MO2 Setup
-
-```bash
-# Install via Lutris (recommended)
-# Lutris → Search "Mod Organizer 2" → Install
-
-# Or use Proton
-# Steam → Add Non-Steam Game → Select MO2 executable
-# Force Proton in compatibility settings
-```
-
-### NXM Link Handler
-
-```bash
-# Register NXM protocol
-xdg-mime default mo2-handler.desktop x-scheme-handler/nxm
-
-# Test
-xdg-open "nxm://skyrimspecialedition/mods/1/files/1"
-```
-
-## Game-Specific Tips
-
-### Cyberpunk 2077
-
-```bash
-# Steam launch options
-PROTON_USE_WINED3D=0 %command%
-
-# In-game settings for RX 580
-# Resolution: 1920x1080
-# Preset: Medium
-# FSR: Quality
-# Crowd Density: Medium
-```
-
-### The Witcher 3
-
-```bash
-# Steam launch options
-DXVK_HUD=fps %command%
-
-# Enable FSR for better performance
-# Mods: W3EE, HD Reworked
-```
-
-### Skyrim Special Edition
-
-```bash
-# Steam launch options
-PROTON_NO_ESYNC=1 PROTON_NO_FSYNC=1 %command%
-
-# Use MO2 for modding
-# SKSE required for most mods
-```
-
-### Elden Ring
-
-```bash
-# Steam launch options
-STEAM_COMPAT_DATA_PATH=~/.proton/elden_ring %command%
-
-# Disable EasyAntiCheat for modding
-# Use Seamless Co-op mod for multiplayer
-```
-
-## Streaming Games
-
-### OBS Game Capture
-
-```bash
-# Install OBS
-sudo pacman -S obs-studio
-
-# For Wayland, use PipeWire capture
-# OBS → Sources → PipeWire → Select game
-```
-
-### Audio Setup
-
-Use the included audio-setup.sh to create virtual sinks:
-
-```bash
-~/.config/sway/scripts/audio-setup.sh
-```
-
-This creates:
-- `game-audio` - Game sound sink
-- `browser-audio` - Browser/music sink
-- `mic-passthrough` - Microphone routing
-
-Configure OBS to capture `game-audio` monitor.
 
 ## Troubleshooting
 
 ### Game Won't Start
 
-```bash
-# Check Proton logs
-PROTON_LOG=1 %command% 2>&1 | tee game.log
+1. Check Proton version in Steam
+2. Try Proton-GE instead of default Proton
+3. Check for missing dependencies:
 
-# Try different Proton version
-# Steam → Properties → Compatibility → Force specific Proton
+```bash
+# Verify 32-bit libraries
+ldd ~/.steam/steam/steamapps/common/Proton*/dist/lib/wine/*/wine | grep "not found"
 ```
 
 ### Poor Performance
 
-1. **Verify GameMode running:**
-   ```bash
-   gamemoded -s
-   ```
+1. Enable GameMode
+2. Check CPU governor:
 
-2. **Check GPU performance level:**
-   ```bash
-   cat /sys/class/drm/card0/device/power_dpm_force_performance_level
-   echo high | sudo tee /sys/class/drm/card0/device/power_dpm_force_performance_level
-   ```
+```bash
+cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
+```
 
-3. **Disable effects:**
-   Gaming Mode disables SwayFx effects automatically, or:
-   ```bash
-   ~/.config/sway/scripts/toggle-gamemode.sh on
-   ```
+3. Verify AMDGPU is loaded:
+
+```bash
+dmesg | grep -i amdgpu
+```
 
 ### Screen Tearing
 
-```bash
-# Add to Sway config
-output * adaptive_sync on
-
-# Or use gamescope
-gamescope -- %command%
-```
-
-### Audio Issues in Games
+1. Enable VSync in game settings
+2. Use gamescope with vsync:
 
 ```bash
-# Restart PipeWire
-systemctl --user restart pipewire pipewire-pulse
-
-# Check Wine audio
-WINEPREFIX=~/.wine winecfg
-# Audio tab → Select correct device
+gamescope --vsync 1 %command%
 ```
 
-## Resources
+### Gamescope Issues
+
+If gamescope doesn't work:
+
+```bash
+# Check Vulkan support
+vulkaninfo
+
+# Verify gamescope is working
+gamescope --help
+```
+
+### Wine/Proton Issues
+
+1. Clear Proton prefix:
+
+```bash
+rm -rf ~/.steam/steam/steamapps/compatdata/<game-id>/pfx
+```
+
+2. Verify Wine installation:
+
+```bash
+wine --version
+winetricks --version
+```
+
+### DXVK Cache Issues
+
+```bash
+# Clear DXVK cache
+rm -rf ~/.cache/dxvk-cache/*
+
+# Set cache path
+export DXVK_STATE_CACHE_PATH=~/.cache/dxvk-cache
+```
+
+## Performance Tips
+
+### RX 580 Specific Tips
+
+1. **Enable FreeSync** if your monitor supports it
+2. **Use FSR** for games that support it
+3. **Set texture quality to High** - the RX 580 has 8GB VRAM
+4. **Avoid MSAA** - use FXAA or TAA instead
+
+### Recommended Settings for 1080p
+
+| Setting | Recommendation |
+|---------|---------------|
+| Resolution | 1920x1080 (native) |
+| VSync | Adaptive or Off (with FreeSync) |
+| Anti-Aliasing | TAA or FXAA |
+| Texture Quality | High/Ultra |
+| Shadow Quality | Medium/High |
+| Post-Processing | Medium |
+
+## Useful Commands
+
+```bash
+# Check GPU usage
+radeontop
+
+# Check GPU temperatures
+sensors
+
+# Monitor GPU performance
+watch -n 1 'cat /sys/class/drm/card*/device/gpu_busy_percent'
+
+# List Vulkan devices
+vulkaninfo --summary
+
+# Test Vulkan
+vkcube
+
+# Check DirectX support
+dxvk-info
+```
+
+## Additional Resources
 
 - [ProtonDB](https://www.protondb.com/) - Game compatibility reports
-- [Arch Wiki Gaming](https://wiki.archlinux.org/title/Gaming)
-- [GloriousEggroll Proton](https://github.com/GloriousEggroll/proton-ge-custom)
-- [AUR Gaming Packages](https://aur.archlinux.org/packages/?K=gaming)
+- [GamingOnLinux](https://www.gamingonlinux.com/) - Linux gaming news
+- [Steam Deck Gaming](https://steamcommunity.com/groups/steamdeck) - Steam gaming community
+- [Lutris](https://lutris.net/) - Game installer scripts
+- [Wine AppDB](https://appdb.winehq.org/) - Wine compatibility database

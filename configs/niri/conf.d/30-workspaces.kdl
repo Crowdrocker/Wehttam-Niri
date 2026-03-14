@@ -1,0 +1,106 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - WORKSPACES CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// 10 organized workspaces for Photography, Gaming, and Content Creation
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WORKSPACE DEFINITIONS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── WORKSPACE 1: Browser ─────────────────────────────────────────────────────
+workspace "browser" {
+    name "Browser"
+    open-workspace {
+        // Default app for this workspace
+    }
+}
+
+// ─── WORKSPACE 2: Terminal/Development ────────────────────────────────────────
+workspace "terminal" {
+    name "Terminal"
+}
+
+// ─── WORKSPACE 3: Gaming ──────────────────────────────────────────────────────
+workspace "gaming" {
+    name "Gaming"
+}
+
+// ─── WORKSPACE 4: Streaming/OBS ───────────────────────────────────────────────
+workspace "streaming" {
+    name "Streaming"
+}
+
+// ─── WORKSPACE 5: Photography ─────────────────────────────────────────────────
+workspace "photography" {
+    name "Photography"
+}
+
+// ─── WORKSPACE 6: Media/Video ─────────────────────────────────────────────────
+workspace "media" {
+    name "Media"
+}
+
+// ─── WORKSPACE 7: Communication ───────────────────────────────────────────────
+workspace "communication" {
+    name "Communication"
+}
+
+// ─── WORKSPACE 8: Music ───────────────────────────────────────────────────────
+workspace "music" {
+    name "Music"
+}
+
+// ─── WORKSPACE 9: Files ───────────────────────────────────────────────────────
+workspace "files" {
+    name "Files"
+}
+
+// ─── WORKSPACE 10: Misc ───────────────────────────────────────────────────────
+workspace "misc" {
+    name "Misc"
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GAMING MODE WORKSPACE COLORS
+// ═══════════════════════════════════════════════════════════════════════════════
+// Uncomment these to apply different colors per workspace
+
+// Gaming workspace with neon green/cyan theme
+// workspace "gaming" {
+//     name "Gaming"
+//     layout {
+//         border {
+//             width 2
+//             active-gradient from="#94e2d5" to="#a6e3a1" angle=45 relative-to="workspace-view"
+//             inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//         }
+//         focus-ring {
+//             width 3
+//             active-gradient from="#89dceb" to="#94e2d5" angle=45 relative-to="workspace-view"
+//             inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//         }
+//     }
+// }
+
+// Photography workspace with warm sunset theme
+// workspace "photography" {
+//     name "Photography"
+//     layout {
+//         border {
+//             width 2
+//             active-gradient from="#fab387" to="#f38ba8" angle=45 relative-to="workspace-view"
+//             inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//         }
+//         focus-ring {
+//             width 3
+//             active-gradient from="#fab387" to="#f9e2af" angle=45 relative-to="workspace-view"
+//             inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//         }
+//     }
+// }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF WORKSPACES CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════

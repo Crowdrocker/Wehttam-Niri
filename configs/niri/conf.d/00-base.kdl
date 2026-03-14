@@ -1,0 +1,267 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - BASE CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// This file contains: Environment variables, Input settings, Layout configuration
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─────────────────────────────────────────────────────────────────────────────
+// ENVIRONMENT VARIABLES
+// ─────────────────────────────────────────────────────────────────────────────
+
+environment {
+    // Cursor theme
+    QT_QPA_PLATFORM "wayland;xcb"
+    XCURSOR_THEME "Catppuccin-Mocha-Dark-Cursors"
+    XCURSOR_SIZE "24"
+    
+    // Wayland support for Qt applications
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    
+    // GTK theme
+    GTK_THEME "Catppuccin-Mocha-Standard-Mauve-Dark"
+    
+    // Browser Wayland support
+    MOZ_ENABLE_WAYLAND "1"
+    CHROMIUM_FLAGS "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+    
+    // Electron apps Wayland support
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+    
+    // SDL Wayland support
+    SDL_VIDEODRIVER "wayland"
+    
+    // Clutter Wayland support
+    CLUTTER_BACKEND "wayland"
+    
+    // Java applications fix
+    _JAVA_AWT_WM_NONREPARENTING "1"
+    
+    // AMD GPU specific optimizations
+    RADV_PERFTEST "aco,rt"
+    mesa_glthread "true"
+    AMD_VULKAN_ICD "RADV"
+    
+    // Wine/Proton
+    WINEDEBUG "-all"
+    
+    // Editor
+    EDITOR "nvim"
+    VISUAL "nvim"
+    
+    // WehttamSnaps custom
+    WEHTTAMSNAPS_VERSION "2.0.0"
+    JARVIS_MODE "jarvis"
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// INPUT DEVICES
+// ─────────────────────────────────────────────────────────────────────────────
+
+input {
+    keyboard {
+        xkb {
+            layout "us"
+            variant ""
+            options "caps:escape"  // Make Caps Lock an additional Escape
+        }
+        
+        // Key repeat settings
+        repeat-delay 300
+        repeat-rate 50
+        
+        // Trackball/Trackpad settings (if applicable)
+        trackpoint {
+            accel-speed 0.2
+        }
+    }
+    
+    touchpad {
+        tap true
+        dwt true
+        dwtp true
+        natural-scroll true
+        middle-emulation true
+        accel-speed 0.2
+        tap-button-map "left-right-middle"
+    }
+    
+    mouse {
+        accel-speed 0.2
+        natural-scroll false
+    }
+    
+    tablet {
+        map-to-output "eDP-1"
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// OUTPUTS (DISPLAYS)
+// ─────────────────────────────────────────────────────────────────────────────
+
+// Primary monitor configuration
+// Adjust the output name to match your setup (use `niri msg outputs` to list)
+outputs {
+    // Main display - 1080p @ 60Hz
+    output "eDP-1" {
+        mode "1920x1080@60"
+        scale 1.0
+        transform "normal"
+        position x=0 y=0
+        variable-refresh-rate false
+    }
+    
+    // Example external monitor (uncomment and adjust as needed)
+    // output "HDMI-A-1" {
+    //     mode "2560x1440@144"
+    //     scale 1.0
+    //     position x=1920 y=0
+    //     variable-refresh-rate true
+    // }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// CURSOR
+// ─────────────────────────────────────────────────────────────────────────────
+
+cursor {
+    xcursor-theme "Catppuccin-Mocha-Dark-Cursors"
+    xcursor-size 24
+    hide-cursor-delay 0
+    hide-when-typing true
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LAYOUT
+// ─────────────────────────────────────────────────────────────────────────────
+
+layout {
+    // ─── Empty Workspace Gaps ───
+    centered-column {
+        gap 32
+    }
+    
+    // ─── Preset Column Widths ───
+    preset-column-widths {
+        proportion 0.25
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        fixed 960
+        fixed 1200
+        fixed 1440
+    }
+    
+    // ─── Preset Window Heights ───
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.75
+        fixed 600
+        fixed 800
+        fixed 1000
+    }
+    
+    // ─── Default Column Width ───
+    default-column-width {
+        proportion 0.5
+    }
+    
+    // ─── Focus Ring (WehttamSnaps Photography Theme) ───
+    focus-ring {
+        width 3
+        
+        // Active: Blue → Purple gradient (Photography theme)
+        active-gradient from="#89b4fa" to="#b4c8fa" angle=45 relative-to="workspace-view"
+        
+        // Inactive: Dark gray gradient
+        inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+    }
+    
+    // ─── Window Borders (WehttamSnaps Blue → Purple) ───
+    border {
+        width 2
+        
+        // Active: Blue → Purple gradient
+        active-gradient from="#89b4fa" to="#cba6f7" angle=45 relative-to="workspace-view"
+        
+        // Inactive: Dark gray gradient
+        inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+    }
+    
+    // ─── Struts (reserved space) ───
+    struts {
+        left 0
+        right 0
+        top 0
+        bottom 0
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// SCROLL-WHEEL FACTORS
+// ─────────────────────────────────────────────────────────────────────────────
+
+scroll-wheel {
+    scroll-factor 1.0
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PREFER NO CSD
+// ─────────────────────────────────────────────────────────────────────────────
+
+prefer-no-csd true
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// COLOR SCHEME VARIANTS (uncomment to switch)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Gaming Neon (Cyan/Green) ─────────────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#94e2d5" to="#a6e3a1" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#89dceb" to="#94e2d5" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//     }
+// }
+
+// ─── Cyberpunk (Pink/Purple) ─────────────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#f5c2e7" to="#cba6f7" angle=90 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=90 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#f38ba8" to="#f5c2e7" angle=90 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=90 relative-to="workspace-view"
+//     }
+// }
+
+// ─── Photography Sunset (Orange/Pink) ─────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#fab387" to="#f38ba8" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#fab387" to="#f9e2af" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//     }
+// }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF BASE CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════

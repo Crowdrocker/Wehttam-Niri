@@ -1,0 +1,63 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - STARTUP CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// Applications to start automatically when Niri launches
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SPAWN AT STARTUP
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Sound System ───
+// Play J.A.R.V.I.S. startup sound
+spawn-at-startup "bash" "-c" "sound-system startup"
+
+// ─── Wallpaper ───
+spawn-at-startup "swww" "init"
+spawn-at-startup "bash" "-c" "swww img ~/.config/wehttamsnaps/wallpapers/default.png"
+
+// ─── Status Bar ───
+// Uncomment if using Waybar
+// spawn-at-startup "waybar"
+
+// ─── Polkit Authentication Agent ───
+spawn-at-startup "/usr/lib/polkit-kde-authentication-agent-1"
+
+// ─── Notification Daemon ───
+spawn-at-startup "mako"
+// Or use dunst:
+// spawn-at-startup "dunst"
+
+// ─── Clipboard Manager ───
+spawn-at-startup "wl-paste" "--type" "text" "--watch" "cliphist" "store"
+spawn-at-startup "wl-paste" "--type" "image" "--watch" "cliphist" "store"
+
+// ─── Night Light (if using wlsunset) ───
+// spawn-at-startup "wlsunset" "-l" "37.7749" "-L" "-122.4194"  // San Francisco coords
+
+// ─── Input Method (if needed) ───
+// spawn-at-startup "fcitx5" "-d"
+
+// ─── WehttamSnaps Welcome App ───
+spawn-at-startup "bash" "-c" "sleep 2 && python3 ~/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py"
+
+// ─── GAMING: Auto-start Steam Minimized (optional) ───
+// spawn-at-startup "steam" "-silent"
+
+// ─── COMMS: Auto-start Discord Minimized (optional) ───
+// spawn-at-startup "discord" "--start-minimized"
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ENVIRONMENT SETUP AT STARTUP
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Set keyboard repeat rate
+spawn-at-startup "xkbset" "repeat" "rate" "300" "50"
+
+// Set DPMS settings (display power management)
+spawn-at-startup "xset" "s" "off" "dpms" "0" "0" "1200"  // Screen off after 20 min
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF STARTUP CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════

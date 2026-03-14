@@ -1,0 +1,200 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - KEYBINDINGS CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// Mod = Super/Windows Key
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// NOCTALIA SHELL / LAUNCHER
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Space { spawn "rofi" "-show" "drun"; }
+Mod+S { spawn "rofi" "-show" "window"; }
+Mod+Comma { spawn "rofi" "-show" "run"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// CORE APPLICATIONS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Return { spawn "ghostty"; }
+Mod+Shift+Return { spawn "kitty"; }
+Mod+B { spawn "firefox"; }
+Mod+Shift+B { spawn "brave"; }
+Mod+E { spawn "thunar"; }
+Mod+Shift+E { spawn "dolphin"; }
+Mod+D { spawn "rofi" "-show" "drun"; }
+Mod+Shift+T { spawn "kate"; }
+Mod+O { spawn "obs"; }
+Mod+P { spawn "spotify-launcher"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEBAPPS (Mod + Ctrl)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Ctrl+Y { spawn "bash" "-c" "firefox --new-window 'https://youtube.com'"; }
+Mod+Ctrl+T { spawn "bash" "-c" "firefox --new-window 'https://twitch.tv'"; }
+Mod+Ctrl+S { spawn "bash" "-c" "firefox --new-window 'https://open.spotify.com'"; }
+Mod+Ctrl+D { spawn "bash" "-c" "firefox --new-window 'https://discord.com/app'"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// GAMING & PERFORMANCE
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+G { spawn "sound-system" "gaming-toggle"; }
+Mod+Shift+S { spawn "bash" "-c" "sound-system steam-launch && steam"; }
+Mod+Alt+P { spawn "protonup-qt"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS SPECIFIC
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+H { spawn "bash" "-c" "~/.config/wehttamsnaps/scripts/KeyHints.sh"; }
+Mod+Shift+H { spawn "bash" "-c" "~/.config/wehttamsnaps/scripts/jarvis-menu"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WORKSPACE SWITCHING (Mod + 1-0)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+1 { focus-workspace 1; }
+Mod+2 { focus-workspace 2; }
+Mod+3 { focus-workspace 3; }
+Mod+4 { focus-workspace 4; }
+Mod+5 { focus-workspace 5; }
+Mod+6 { focus-workspace 6; }
+Mod+7 { focus-workspace 7; }
+Mod+8 { focus-workspace 8; }
+Mod+9 { focus-workspace 9; }
+Mod+0 { focus-workspace 10; }
+
+// ─── Move Window to Workspace (Mod + Shift + 1-0) ───
+
+Mod+Shift+1 { move-column-to-workspace 1; }
+Mod+Shift+2 { move-column-to-workspace 2; }
+Mod+Shift+3 { move-column-to-workspace 3; }
+Mod+Shift+4 { move-column-to-workspace 4; }
+Mod+Shift+5 { move-column-to-workspace 5; }
+Mod+Shift+6 { move-column-to-workspace 6; }
+Mod+Shift+7 { move-column-to-workspace 7; }
+Mod+Shift+8 { move-column-to-workspace 8; }
+Mod+Shift+9 { move-column-to-workspace 9; }
+Mod+Shift+0 { move-column-to-workspace 10; }
+
+// ─── Workspace Navigation ───
+
+Mod+Tab { focus-workspace-previous; }
+Mod+Ctrl+Right { focus-workspace-next; }
+Mod+Ctrl+Left { focus-workspace-previous; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WINDOW MANAGEMENT
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Q { close-window; }
+Mod+F { maximize-column; }
+Mod+Shift+F { fullscreen-window; }
+Mod+Ctrl+V { toggle-column-floating; }
+Mod+Shift+V { switch-focus-between-floating-and-tiling; }
+Mod+W { toggle-window-rule-state "floating"; }
+Mod+R { switch-preset-column-width; }
+Mod+Shift+R { switch-preset-window-height; }
+Mod+Alt+C { center-column; }
+
+// ─── Window Column Width ───
+
+Mod+Minus { set-column-width "-10%"; }
+Mod+Equal { set-column-width "+10%"; }
+Mod+Shift+Minus { set-window-height "-10%"; }
+Mod+Shift+Equal { set-window-height "+10%"; }
+
+// ─── Focus Movement ───
+
+Mod+Left { focus-column-left; }
+Mod+Right { focus-column-right; }
+Mod+Up { focus-window-up; }
+Mod+Down { focus-window-down; }
+
+// ─── Vim-style Focus Movement ───
+
+Mod+Alt+H { focus-column-left; }
+Mod+Alt+J { focus-window-down; }
+Mod+Alt+K { focus-window-up; }
+Mod+Alt+Semicolon { focus-column-right; }
+
+// ─── Window Movement ───
+
+Mod+Ctrl+H { move-column-left; }
+Mod+Ctrl+J { move-window-down; }
+Mod+Ctrl+K { move-window-up; }
+Mod+Ctrl+Semicolon { move-column-right; }
+
+// ─── Consume/Expel Windows ───
+
+Mod+BracketLeft { consume-or-expel-window-left; }
+Mod+BracketRight { consume-or-expel-window-right; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SCREENSHOTS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Print { spawn "bash" "-c" "grim ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && sound-system screenshot"; }
+Ctrl+Print { spawn "bash" "-c" "niri msg action screenshot-screen"; }
+Alt+Print { spawn "bash" "-c" "niri msg action screenshot-window"; }
+Mod+Shift+Print { spawn "bash" "-c" "grim -g &quot;$(slurp)&quot; ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && sound-system screenshot"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// AUDIO CONTROLS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+XF86AudioMute { spawn "sound-system" "mute"; }
+XF86AudioRaiseVolume { spawn "sound-system" "volume-up"; }
+XF86AudioLowerVolume { spawn "sound-system" "volume-down"; }
+XF86AudioMicMute { spawn "sound-system" "mic-mute"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// MEDIA CONTROLS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+XF86AudioPlay { spawn "playerctl" "play-pause"; }
+XF86AudioNext { spawn "playerctl" "next"; }
+XF86AudioPrev { spawn "playerctl" "previous"; }
+XF86AudioStop { spawn "playerctl" "stop"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// BRIGHTNESS
+// ═══════════════════════════════════════════════════════════════════════════════
+
+XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
+XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// SYSTEM
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Shift+P { power-off-monitors; }
+Mod+Shift+Slash { toggle-hotkey-overlay; }
+Mod+Alt+L { spawn "swaylock"; }
+Mod+Ctrl+Escape { quit; }
+Ctrl+Alt+Delete { quit; }
+
+// ─── Config Management ───
+
+Mod+Shift+Ctrl+R { spawn "niri" "msg" "action" "reload-config"; }
+Mod+Shift+Ctrl+V { spawn "bash" "-c" "niri validate && notify-send 'Niri' 'Config validated successfully'"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// AUDIO ROUTING
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+A { spawn "qpwgraph"; }
+Mod+Shift+A { spawn "pavucontrol"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// WALLPAPER
+// ═══════════════════════════════════════════════════════════════════════════════
+
+Mod+Shift+W { spawn "bash" "-c" "swww img $(find ~/.config/wehttamsnaps/wallpapers -type f | shuf -n1)"; }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF KEYBINDINGS
+// ═══════════════════════════════════════════════════════════════════════════════
