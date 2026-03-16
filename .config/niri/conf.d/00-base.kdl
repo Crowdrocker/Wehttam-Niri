@@ -1,0 +1,288 @@
+// ═══════════════════════════════════════════════════════════════════════════════
+// WEHTTAMSNAPS NIRI - BASE CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// This file contains: Environment variables, Input settings, Layout configuration
+// Author: Matthew (WehttamSnaps)
+// ═══════════════════════════════════════════════════════════════════════════════
+// ╭─────────────────────────────── ENVIRONMENT VARIABLES ────────────────────────────╮
+environment {
+    // Cursor theme
+    QT_QPA_PLATFORM "wayland;xcb"
+    XCURSOR_THEME "Catppuccin-Mocha-Dark-Cursors"
+    XCURSOR_SIZE "24"
+
+    // Qt theming: use kde platform for kdeglobals colors, Darkly for widget style
+    QT_QPA_PLATFORMTHEME "kde"
+
+    // Wayland support for Qt applications
+    QT_WAYLAND_DISABLE_WINDOWDECORATION "1"
+    QT_QPA_PLATFORMTHEME "qt6ct"
+    GDK_BACKEND "wayland"
+
+    // Browser Wayland support
+    MOZ_ENABLE_WAYLAND "1"
+    CHROMIUM_FLAGS "--enable-features=UseOzonePlatform --ozone-platform=wayland"
+
+    // AMD GPU specific optimizations
+    RADV_PERFTEST "aco,rt"
+    mesa_glthread "true"
+    AMD_VULKAN_ICD "RADV"
+
+    // Electron apps Wayland support
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+
+    // niri
+    XDG_CURRENT_DESKTOP "niri"
+    XDG_SESSION_TYPE "wayland"
+
+    // SDL Wayland support
+    SDL_VIDEODRIVER "wayland"
+
+    // Clutter Wayland support
+    CLUTTER_BACKEND "wayland"
+
+    // Java applications fix
+    _JAVA_AWT_WM_NONREPARENTING "1"
+
+    // Wine/Proton
+    WINEDEBUG "-all"
+
+    // Editor
+    EDITOR "nvim"
+    VISUAL "nvim"
+
+    // WehttamSnaps custom
+    WEHTTAMSNAPS_VERSION "2.0.0"
+    JARVIS_MODE "jarvis"
+}
+// ╰──────────────────────────────────────────────────────────────────────────────────╯
+
+
+// ╭────────────────────────────── INPUT ──────────────────────────────╮
+input {
+    keyboard {
+        xkb {
+            layout "us"
+        }
+        numlock
+    }
+    mouse {
+        accel-profile "flat"
+    }
+    focus-follows-mouse
+    workspace-auto-back-and-forth
+}
+
+// ╰──────────────────────────────────────────────────────────────────╯
+
+// ╭───────────────────────────── OUTPUT ─────────────────────────────╮
+// Primary monitor configuration
+// Adjust the output name to match your setup (use `niri msg outputs` to list)
+output "DP-2" {
+    mode "1920x1080@60.000"
+    scale 1.0
+    position x=0 y=0
+    variable-refresh-rate // on-demand=true
+    focus-at-startup
+    backdrop-color "#001100"
+
+    // Example external monitor (uncomment and adjust as needed)
+    // output "HDMI-A-1" {
+    //     mode "2560x1440@144"
+    //     scale 1.0
+    //     position x=1920 y=0
+    //     variable-refresh-rate true
+    // }
+}
+
+// ╰──────────────────────────────────────────────────────────────────╯
+
+// ╭───────────────────────────── CURSOR ─────────────────────────────╮
+cursor {
+    xcursor-theme "Adwaita"
+    xcursor-size 24
+    hide-when-typing
+    hide-after-inactive-ms 5000
+}
+// ╰──────────────────────────────────────────────────────────────────╯
+
+// ─────────────────────────────────────────────────────────────────────────────
+// LAYOUT
+// ─────────────────────────────────────────────────────────────────────────────
+
+layout {
+    // ─── Empty Workspace Gaps ───
+    gaps 12
+    background-color "transparent"
+    center-focused-column "never"
+    
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 0.96
+        proportion 1.0
+    }
+
+    preset-window-heights {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+        proportion 1.0
+    }
+
+    // Windows will now open at 2/3rds width, showing your rice behind them
+    default-column-width { proportion 0.67; }
+
+    focus-ring {
+        width 4
+        active-gradient from="#ff5af1" to="#00ffd1" angle=45
+    }
+
+    shadow {
+        softness 30
+        spread 5
+        offset x=0 y=5
+        color "#0007"
+    }
+
+    // Struts for Noctalia bar (adjust if using top bar)
+    struts {
+        left 2
+        right 2
+        top 2
+        bottom 2
+    }
+}
+
+// ╭───────────────────────────── gestures ───────────────────────────╮
+gestures {
+    dnd-edge-view-scroll {
+        trigger-width 30
+        delay-ms 100
+        max-speed 1500
+    }
+
+    dnd-edge-workspace-switch {
+        trigger-height 50
+        delay-ms 100
+        max-speed 1500
+    }
+
+    hot-corners {
+        // off
+        top-left
+        // top-right
+        // bottom-left
+        // bottom-right
+    }
+}
+// ╰──────────────────────────────────────────────────────────────────╯
+
+// ╭───────────────────────────── OVERVIEW ───────────────────────────╮
+overview {
+    workspace-shadow {
+        off
+    }
+}
+config-notification {
+    disable-failed
+}
+// ╰──────────────────────────────────────────────────────────────────╯
+
+// ─────────────────────────────────────────────────────────────────────────────
+// PREFER NO CSD
+// ─────────────────────────────────────────────────────────────────────────────
+
+prefer-no-csd
+
+// ╭─────────────────────────────── SCREENSHOT DIRECTORY ─────────────────────────────╮
+screenshot-path "~/Pictures/Screenshots/Screenshot_%Y-%m-%d_%H-%M-%S.png"
+// ╰──────────────────────────────────────────────────────────────────────────────────╯
+
+// ╭─────────────────────────────── HOTKEY OVERLAY ───────────────────────────────────╮
+
+hotkey-overlay {
+    skip-at-startup
+    hide-not-bound
+}
+
+// ╰──────────────────────────────────────────────────────────────────────────────────╯
+
+// ╭─────────────────────────────── DEBUG SETTINGS ───────────────────────────────────╮
+debug {
+    //enable-offload-optimizations true
+    wait-for-frame-completion-before-queueing
+    render-drm-device "/dev/dri/renderD128"
+    // Allows notification actions and window activation from Noctalia.
+    honor-xdg-activation-with-invalid-serial
+}
+// ╰──────────────────────────────────────────────────────────────────────────────────╯
+
+// ╭───────────────────────────── CLIPBOARD SETTINGS ─────────────────────────────────╮
+clipboard {
+    disable-primary
+}
+// ╰──────────────────────────────────────────────────────────────────────────────────╯
+// ═══════════════════════════════════════════════════════════════════════════════
+// COLOR SCHEME VARIANTS (uncomment to switch)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Gaming Neon (Cyan/Green) ─────────────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#94e2d5" to="#a6e3a1" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#89dceb" to="#94e2d5" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//     }
+// }
+
+// ─── Cyberpunk (Pink/Purple) ─────────────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#f5c2e7" to="#cba6f7" angle=90 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=90 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#f38ba8" to="#f5c2e7" angle=90 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=90 relative-to="workspace-view"
+//     }
+// }
+
+// ─── Photography Sunset (Orange/Pink) ─────────────────────────────────────────
+// layout {
+//     border {
+//         width 2
+//         active-gradient from="#fab387" to="#f38ba8" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#313244" to="#45475a" angle=45 relative-to="workspace-view"
+//     }
+//     focus-ring {
+//         width 3
+//         active-gradient from="#fab387" to="#f9e2af" angle=45 relative-to="workspace-view"
+//         inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+//     }
+// }
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// END OF BASE CONFIGURATION
+// ═══════════════════════════════════════════════════════════════════════════════
+// WehttamSnaps branding comment
+/*
+ * WehttamSnaps Arch Linux Niri Configuration
+ * GitHub: https://github.com/Crowdrocker/wehttamsnaps-dotfiles
+ *
+ * Optimized for:
+ * - Photography workflow (Darktable, GIMP, RawTherapee)
+ * - Gaming performance (RX 580 + i7-4790)
+ * - J.A.R.V.I.S. themed experience
+ * - Productivity and content creation
+ *
+ * "It just works!" - WehttamSnaps
+ */

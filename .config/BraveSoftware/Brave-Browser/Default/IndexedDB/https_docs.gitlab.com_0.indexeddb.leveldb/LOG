@@ -1,0 +1,6 @@
+2026/03/11-12:32:13.922 12174 Creating DB /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_docs.gitlab.com_0.indexeddb.leveldb since it was missing.
+2026/03/11-12:32:13.927 12174 Reusing MANIFEST /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/IndexedDB/https_docs.gitlab.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/03/11-12:32:13.964 12186 Level-0 table #5: started
+2026/03/11-12:32:13.966 12186 Level-0 table #5: 1330 bytes OK
+2026/03/11-12:32:13.968 12186 Delete type=0 #3
+2026/03/11-12:32:13.968 12172 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)

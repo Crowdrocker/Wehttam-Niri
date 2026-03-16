@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+pkill swaybg
+swaybg -o 'DP-2' -i "/home/wehttamsnaps/Pictures/Wallpapers/wallhaven_5wry33.jpg" -m fill &

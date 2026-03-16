@@ -1,0 +1,6 @@
+2026/03/15-20:39:00.365 d54b Creating DB /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/WebStorage/93/IndexedDB/indexeddb.leveldb since it was missing.
+2026/03/15-20:39:00.378 d54b Reusing MANIFEST /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/WebStorage/93/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2026/03/15-23:18:19.411 d54d Level-0 table #5: started
+2026/03/15-23:18:19.412 d54d Level-0 table #5: 1107 bytes OK
+2026/03/15-23:18:19.414 d54d Delete type=0 #3
+2026/03/15-23:18:19.414 d54d Manual compaction at level-0 from (begin) .. (end); will stop at (end)

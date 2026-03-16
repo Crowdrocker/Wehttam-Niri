@@ -1,0 +1,6 @@
+2026/03/15-19:13:43.303 5 Reusing MANIFEST /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/MANIFEST-000001
+2026/03/15-19:13:43.304 5 Recovering log #548
+2026/03/15-19:13:43.304 5 Reusing old log /home/wehttamsnaps/.config/BraveSoftware/Brave-Browser/Default/Local Storage/leveldb/000548.log 
+2026/03/15-19:34:05.250 7 Level-0 table #552: started
+2026/03/15-19:34:05.271 7 Level-0 table #552: 18006 bytes OK
+2026/03/15-19:34:05.274 7 Delete type=0 #548

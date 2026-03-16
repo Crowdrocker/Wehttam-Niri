@@ -1,0 +1,9 @@
+Environment variable $DISPLAY not set, ignoring.
+Calling import-environment without a list of variable names is deprecated.
+Environment variable $LESS_TERMCAP_se contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_so contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_mb contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_me contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_md contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_ue contains control characters, importing anyway.
+Environment variable $LESS_TERMCAP_us contains control characters, importing anyway.

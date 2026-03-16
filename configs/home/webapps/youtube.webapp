@@ -1,8 +1,0 @@
-# YouTube webapp configuration
-# Usage: webapp youtube
-# Keybind: Mod + W, Y
-
-WEBAPP_NAME="YouTube"
-WEBAPP_URL="https://www.youtube.com"
-WEBAPP_ICON="youtube"
-WEBAPP_BROWSER="brave"

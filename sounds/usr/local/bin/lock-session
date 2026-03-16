@@ -1,0 +1,11 @@
+#!/bin/bash
+# Trigger the new canonical lock sound
+sound-system locking-screen
+
+# Lock with TokyoNight colors (#8A2BE2 Purple, #00FFFF Cyan)
+swaylock \
+  --screenshots --clock --indicator \
+  --indicator-radius 100 --indicator-thickness 7 \
+  --effect-blur 7x5 --effect-vignette 0.5:0.5 \
+  --ring-color 8a2be2 --key-hl-color 00ffff \
+  --text-color 00ffff --inside-color 00000088
