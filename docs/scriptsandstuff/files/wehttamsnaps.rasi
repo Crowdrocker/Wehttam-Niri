@@ -1,0 +1,234 @@
+/**
+ * WehttamSnaps Rofi Theme
+ * Cyberpunk palette: cyan #00ffd1 / blue #3b82ff / pink #ff5af1 / orange #ff6b1a
+ * github.com/Crowdrocker  |  twitch.tv/WehttamSnaps
+ *
+ * Install:
+ *   mkdir -p ~/.config/rofi/themes
+ *   cp wehttamsnaps.rasi ~/.config/rofi/themes/wehttamsnaps.rasi
+ *
+ * Usage in i3 config:
+ *   bindsym $mod+d exec rofi -show drun -theme ~/.config/rofi/themes/wehttamsnaps.rasi
+ */
+
+/* ── Variables ──────────────────────────────────────────────────────── */
+* {
+    bg0:        #06060f;
+    bg1:        #0a0a1c;
+    bg2:        #0e0e24;
+    bg3:        #141428;
+    border-col: #1a1a3a;
+
+    cyan:       #00ffd1;
+    blue:       #3b82ff;
+    pink:       #ff5af1;
+    orange:     #ff6b1a;
+    red:        #ff1744;
+    green:      #00e676;
+
+    fg0:        #c8d0e8;
+    fg1:        #8890aa;
+    fg2:        #3a4060;
+
+    font-main:  "JetBrains Mono 11";
+    font-small: "JetBrains Mono 9";
+
+    /* Reset all rofi defaults */
+    background-color: transparent;
+    text-color:       @fg0;
+    border-color:     @border-col;
+    spacing:          0;
+    padding:          0;
+    margin:           0;
+}
+
+/* ── Window ─────────────────────────────────────────────────────────── */
+window {
+    background-color: @bg0;
+    border:           1px solid;
+    border-color:     @border-col;
+    border-radius:    2px;
+    width:            620px;
+    padding:          0;
+
+    /* Subtle cyan glow on the top edge */
+    box-shadow:       0 0 0 1px @bg0,
+                      0 -2px 0 0 @cyan;
+}
+
+/* ── Main box ───────────────────────────────────────────────────────── */
+mainbox {
+    background-color: transparent;
+    children:         [ inputbar, message, listview ];
+    spacing:          0;
+}
+
+/* ── Input bar ──────────────────────────────────────────────────────── */
+inputbar {
+    background-color: @bg1;
+    border:           0 0 1px 0;
+    border-color:     @border-col;
+    padding:          10px 14px;
+    spacing:          10px;
+    children:         [ prompt, textbox-prompt-colon, entry ];
+}
+
+prompt {
+    background-color: transparent;
+    text-color:       @cyan;
+    font:             "JetBrains Mono Bold 11";
+    vertical-align:   0.5;
+}
+
+textbox-prompt-colon {
+    background-color: transparent;
+    text-color:       @fg2;
+    str:              "//";
+    vertical-align:   0.5;
+    font:             @font-small;
+}
+
+entry {
+    background-color: transparent;
+    text-color:       @fg0;
+    placeholder:      "Search applications...";
+    placeholder-color: @fg2;
+    cursor:           text;
+    font:             @font-main;
+    vertical-align:   0.5;
+}
+
+/* ── Message (shows mode name / counts) ────────────────────────────── */
+message {
+    background-color: @bg2;
+    border:           0 0 1px 0;
+    border-color:     @border-col;
+    padding:          4px 14px;
+}
+
+textbox {
+    background-color: transparent;
+    text-color:       @fg2;
+    font:             @font-small;
+}
+
+/* ── List view ──────────────────────────────────────────────────────── */
+listview {
+    background-color: transparent;
+    padding:          6px 0;
+    lines:            10;
+    columns:          1;
+    scrollbar:        true;
+    spacing:          0;
+    dynamic:          true;
+    layout:           vertical;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────── */
+scrollbar {
+    background-color: @bg1;
+    handle-color:     @border-col;
+    handle-width:     3px;
+    border:           0 0 0 1px;
+    border-color:     @border-col;
+    width:            4px;
+    padding:          0;
+}
+
+/* ── Each row ───────────────────────────────────────────────────────── */
+element {
+    background-color: transparent;
+    padding:          8px 14px;
+    spacing:          10px;
+    border:           0 0 0 2px;
+    border-color:     transparent;
+    border-radius:    0;
+    children:         [ element-icon, element-text ];
+    orientation:      horizontal;
+    cursor:           pointer;
+}
+
+element normal.normal {
+    background-color: transparent;
+    text-color:       @fg0;
+    border-color:     transparent;
+}
+
+element normal.urgent {
+    background-color: rgba(255,23,68,0.1);
+    text-color:       @red;
+    border-color:     @red;
+}
+
+element normal.active {
+    background-color: rgba(0,255,209,0.05);
+    text-color:       @cyan;
+    border-color:     @cyan;
+}
+
+/* Hovered */
+element alternate.normal {
+    background-color: transparent;
+    text-color:       @fg1;
+    border-color:     transparent;
+}
+
+/* Selected / focused */
+element selected.normal {
+    background-color: rgba(0,255,209,0.08);
+    text-color:       @cyan;
+    border-color:     @cyan;
+}
+
+element selected.urgent {
+    background-color: rgba(255,23,68,0.15);
+    text-color:       @red;
+    border-color:     @red;
+}
+
+element selected.active {
+    background-color: rgba(59,130,255,0.12);
+    text-color:       @blue;
+    border-color:     @blue;
+}
+
+element-icon {
+    background-color: transparent;
+    size:             22px;
+    vertical-align:   0.5;
+    cursor:           inherit;
+}
+
+element-text {
+    background-color: transparent;
+    text-color:       inherit;
+    font:             @font-main;
+    vertical-align:   0.5;
+    cursor:           inherit;
+    highlight:        bold @cyan;
+}
+
+/* ── Mode switcher (shown when using -show combi etc) ───────────────── */
+mode-switcher {
+    background-color: @bg1;
+    border:           1px 0 0 0;
+    border-color:     @border-col;
+    padding:          4px;
+    spacing:          4px;
+}
+
+button {
+    background-color: transparent;
+    text-color:       @fg2;
+    font:             @font-small;
+    padding:          4px 10px;
+    border-radius:    1px;
+    cursor:           pointer;
+}
+
+button selected {
+    background-color: rgba(0,255,209,0.1);
+    text-color:       @cyan;
+    border:           1px solid;
+    border-color:     @cyan;
+}

@@ -1,200 +1,284 @@
-// ═══════════════════════════════════════════════════════════════════════════════
-// WEHTTAMSNAPS NIRI - KEYBINDINGS CONFIGURATION
-// ═══════════════════════════════════════════════════════════════════════════════
-// Mod = Super/Windows Key
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// WEHTTAMSNAPS NIRI - KEYBINDINGS CONFIGURATION (CORRECTED)
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+//Mod = Super/Windows Key
 // Author: Matthew (WehttamSnaps)
-// ═══════════════════════════════════════════════════════════════════════════════
+//
+// SOUND SYSTEM REFERENCE:
+// ─────────────────────────────────────────────────────────────────────────────
+// sound-system commands (see /usr/local/bin/sound-system):
+//
+//   Audio:        mute, volume-up, volume-down, mic-mute
+//   System:       startup, shutdown, notification, screenshot, window-close
+//   Mode:         gaming-toggle, workspace <num>, mode <jarvis|idroid>
+//   Launch:       steam-launch, photo-export
+//   Utility:      status, list, test, preview <name> [mode]
+//
+// Sound files location: /usr/share/wehttamsnaps/sounds/{jarvis,idroid}/
+// ─────────────────────────────────────────────────────────────────────────────
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// NOCTALIA SHELL / LAUNCHER
-// ═══════════════════════════════════════════════════════════════════════════════
+//mod="Mod4"
 
-Mod+Space { spawn "rofi" "-show" "drun"; }
-Mod+S { spawn "rofi" "-show" "window"; }
-Mod+Comma { spawn "rofi" "-show" "run"; }
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+// ALL KEYBINDINGS
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// CORE APPLICATIONS
-// ═══════════════════════════════════════════════════════════════════════════════
+binds {
 
-Mod+Return { spawn "ghostty"; }
-Mod+Shift+Return { spawn "kitty"; }
-Mod+B { spawn "firefox"; }
-Mod+Shift+B { spawn "brave"; }
-Mod+E { spawn "thunar"; }
-Mod+Shift+E { spawn "dolphin"; }
-Mod+D { spawn "rofi" "-show" "drun"; }
-Mod+Shift+T { spawn "kate"; }
-Mod+O { spawn "obs"; }
-Mod+P { spawn "spotify-launcher"; }
+    // ─────────────────────────────────────────────────────────────────────────
+    // NOCTALIA SHELL / LAUNCHER
+    // ─────────────────────────────────────────────────────────────────────────
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// WEBAPPS (Mod + Ctrl)
-// ═══════════════════════════════════════════════════════════════════════════════
+    Mod+Space { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+S     { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
+    Mod+Comma { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
 
-Mod+Ctrl+Y { spawn "bash" "-c" "firefox --new-window 'https://youtube.com'"; }
-Mod+Ctrl+T { spawn "bash" "-c" "firefox --new-window 'https://twitch.tv'"; }
-Mod+Ctrl+S { spawn "bash" "-c" "firefox --new-window 'https://open.spotify.com'"; }
-Mod+Ctrl+D { spawn "bash" "-c" "firefox --new-window 'https://discord.com/app'"; }
+    // Noctalia IPC audio/brightness (commented — using sound-system below instead)
+    XF86AudioRaiseVolume  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "increase"; }
+    XF86AudioLowerVolume  { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "decrease"; }
+    XF86AudioMute         { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "volume" "muteOutput"; }
+    XF86MonBrightnessUp   { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "increase"; }
+    XF86MonBrightnessDown { spawn "qs" "-c" "noctalia-shell" "ipc" "call" "brightness" "decrease"; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// GAMING & PERFORMANCE
-// ═══════════════════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────────────────────────────
+    // CORE APPLICATIONS (with J.A.R.V.I.S. sounds)
+    // ─────────────────────────────────────────────────────────────────────────
 
-Mod+G { spawn "sound-system" "gaming-toggle"; }
-Mod+Shift+S { spawn "bash" "-c" "sound-system steam-launch && steam"; }
-Mod+Alt+P { spawn "protonup-qt"; }
+    // Terminal - Mod+Return (Ghostty)
+    Mod+Return { spawn "sh" "-c" "sound-system launch-terminal && com.mitchellh.ghostty"; }
+    //Mod+Return       { spawn "sh" "-c" "sound-system jarvis-open-terminal && com.mitchellh.ghostty"; }
+    Mod+Shift+Return { spawn "kitty"; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// WEHTTAMSNAPS SPECIFIC
-// ═══════════════════════════════════════════════════════════════════════════════
+    // Browser - Mod+B (brave, quick launch)
+    Mod+B      { spawn "sh" "-c" "sound-system launch-brave && brave"; }
 
-Mod+H { spawn "bash" "-c" "~/.config/wehttamsnaps/scripts/KeyHints.sh"; }
-Mod+Shift+H { spawn "bash" "-c" "~/.config/wehttamsnaps/scripts/jarvis-menu"; }
+    // Browser - Mod+Shift+B (Brave with sound)
+    Mod+Shift+B      { spawn "sh" "-c" "sound-system launch-firefox && firefox"; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// WORKSPACE SWITCHING (Mod + 1-0)
-// ═══════════════════════════════════════════════════════════════════════════════
+    // File Manager - Mod+E (Thunar)
+    Mod+E            { spawn "sh" "-c" "sound-system launch-files && thunar"; }
 
-Mod+1 { focus-workspace 1; }
-Mod+2 { focus-workspace 2; }
-Mod+3 { focus-workspace 3; }
-Mod+4 { focus-workspace 4; }
-Mod+5 { focus-workspace 5; }
-Mod+6 { focus-workspace 6; }
-Mod+7 { focus-workspace 7; }
-Mod+8 { focus-workspace 8; }
-Mod+9 { focus-workspace 9; }
-Mod+0 { focus-workspace 10; }
+    // App Launcher - Mod+Shift+D (Rofi)
+    Mod+Shift+D      { spawn "rofi" "-show" "drun"; }
 
-// ─── Move Window to Workspace (Mod + Shift + 1-0) ───
+    // Text Editor - Mod+Shift+T (Kate)
+    // NOTE: sound-system doesn't have launch-editor, using notification
+    Mod+Shift+T      { spawn "sh" "-c" "sound-system launch-kate && kate"; }
 
-Mod+Shift+1 { move-column-to-workspace 1; }
-Mod+Shift+2 { move-column-to-workspace 2; }
-Mod+Shift+3 { move-column-to-workspace 3; }
-Mod+Shift+4 { move-column-to-workspace 4; }
-Mod+Shift+5 { move-column-to-workspace 5; }
-Mod+Shift+6 { move-column-to-workspace 6; }
-Mod+Shift+7 { move-column-to-workspace 7; }
-Mod+Shift+8 { move-column-to-workspace 8; }
-Mod+Shift+9 { move-column-to-workspace 9; }
-Mod+Shift+0 { move-column-to-workspace 10; }
+    // OBS Studio - Mod+O
+    // NOTE: sound-system doesn't have launch-obs, using notification
+    Mod+O            { spawn "sh" "-c" "sound-system launch-obs && obs"; }
 
-// ─── Workspace Navigation ───
+    // Spotify - Mod+P
+    // NOTE: sound-system doesn't have launch-spotify, using notification
+    Mod+P            { spawn "sh" "-c" "sound-system launch-spotify && spotify-launcher"; }
 
-Mod+Tab { focus-workspace-previous; }
-Mod+Ctrl+Right { focus-workspace-next; }
-Mod+Ctrl+Left { focus-workspace-previous; }
+    // ─────────────────────────────────────────────────────────────────────────
+    // WEBAPPS (Mod+Ctrl) - No sounds for quick web app access
+    // ─────────────────────────────────────────────────────────────────────────
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// WINDOW MANAGEMENT
-// ═══════════════════════════════════════════════════════════════════════════════
+    Mod+Ctrl+Y { spawn "sh" "-c" "brave --app=https://youtube.com --profile-directory='YouTube'"; }
+    Mod+Ctrl+T { spawn "sh" "-c" "brave --app=https://twitch.tv --profile-directory='Twitch'"; }
+    Mod+Ctrl+S { spawn "sh" "-c" "brave --app=https://open.spotify.com --profile-directory='Spotify'"; }
+    Mod+Ctrl+D { spawn "sh" "-c" "brave --app=https://discord.com/app --profile-directory='Discord'"; }
 
-Mod+Q { close-window; }
-Mod+F { maximize-column; }
-Mod+Shift+F { fullscreen-window; }
-Mod+Ctrl+V { toggle-column-floating; }
-Mod+Shift+V { switch-focus-between-floating-and-tiling; }
-Mod+W { toggle-window-rule-state "floating"; }
-Mod+R { switch-preset-column-width; }
-Mod+Shift+R { switch-preset-window-height; }
-Mod+Alt+C { center-column; }
+    // ─────────────────────────────────────────────────────────────────────────
+    // GAMING & PERFORMANCE
+    // ─────────────────────────────────────────────────────────────────────────
 
-// ─── Window Column Width ───
+    // Gaming Mode Toggle - Mod+G (switches to iDroid voice)
+    Mod+G       { spawn "/usr/local/bin/sound-system" "gaming-toggle"; }
 
-Mod+Minus { set-column-width "-10%"; }
-Mod+Equal { set-column-width "+10%"; }
-Mod+Shift+Minus { set-window-height "-10%"; }
-Mod+Shift+Equal { set-window-height "+10%"; }
+    // Steam Launch - Mod+Shift+S (with iDroid sound)
+    Mod+Shift+S { spawn "sh" "-c" "sound-system steam-launch && steam"; }
 
-// ─── Focus Movement ───
+    // ─────────────────────────────────────────────────────────────────────────
+    // WEHTTAMSNAPS SPECIFIC
+    // ─────────────────────────────────────────────────────────────────────────
 
-Mod+Left { focus-column-left; }
-Mod+Right { focus-column-right; }
-Mod+Up { focus-window-up; }
-Mod+Down { focus-window-down; }
+    // KeyHints cheat sheet (rofi overlay)
+    Mod+H         { spawn "sh" "-c" "~/.config/wehttamsnaps/scripts/keyhints.sh"; }
+    Mod+Shift+W   { spawn "python3" "~/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py"; }
 
-// ─── Vim-style Focus Movement ───
+    // J.A.R.V.I.S. menus
+    Mod+Slash     { spawn "/usr/local/bin/jarvis-menu" "command"; }
+    Mod+Alt+J     { spawn "/usr/local/bin/jarvis-menu"; }
 
-Mod+Alt+H { focus-column-left; }
-Mod+Alt+J { focus-window-down; }
-Mod+Alt+K { focus-window-up; }
-Mod+Alt+Semicolon { focus-column-right; }
+    // ─────────────────────────────────────────────────────────────────────────
+    // WORKSPACE SWITCHING (Mod + 1-0)
+    // ─────────────────────────────────────────────────────────────────────────
+    // Sound plays AFTER workspace switch for audio feedback
+    // Gaming workspaces (2, 3, 6, 7) auto-switch to iDroid via gaming-toggle
+    // ─────────────────────────────────────────────────────────────────────────
 
-// ─── Window Movement ───
+    Mod+1 { spawn "sh" "-c" "niri msg action focus-workspace 1 && sound-system workspace 1"; }
+    Mod+2 { spawn "sh" "-c" "niri msg action focus-workspace 2 && sound-system workspace 2"; }
+    Mod+3 { spawn "sh" "-c" "niri msg action focus-workspace 3 && sound-system workspace 3"; }
+    Mod+4 { spawn "sh" "-c" "niri msg action focus-workspace 4 && sound-system workspace 4"; }
+    Mod+5 { spawn "sh" "-c" "niri msg action focus-workspace 5 && sound-system workspace 5"; }
+    Mod+6 { spawn "sh" "-c" "niri msg action focus-workspace 6 && sound-system workspace 6"; }
+    Mod+7 { spawn "sh" "-c" "niri msg action focus-workspace 7 && sound-system workspace 7"; }
+    Mod+8 { spawn "sh" "-c" "niri msg action focus-workspace 8 && sound-system workspace 8"; }
+    Mod+9 { spawn "sh" "-c" "niri msg action focus-workspace 9 && sound-system workspace 9"; }
+    Mod+0 { spawn "sh" "-c" "niri msg action focus-workspace 10 && sound-system workspace 10"; }
 
-Mod+Ctrl+H { move-column-left; }
-Mod+Ctrl+J { move-window-down; }
-Mod+Ctrl+K { move-window-up; }
-Mod+Ctrl+Semicolon { move-column-right; }
+    // Move focused window to workspace
+    Mod+Shift+1 { move-window-to-workspace 1; }
+    Mod+Shift+2 { move-window-to-workspace 2; }
+    Mod+Shift+3 { move-window-to-workspace 3; }
+    Mod+Shift+4 { move-window-to-workspace 4; }
+    Mod+Shift+5 { move-window-to-workspace 5; }
+    Mod+Shift+6 { move-window-to-workspace 6; }
+    Mod+Shift+7 { move-window-to-workspace 7; }
+    Mod+Shift+8 { move-window-to-workspace 8; }
+    Mod+Shift+9 { move-window-to-workspace 9; }
+    Mod+Shift+0 { move-window-to-workspace 10; }
 
-// ─── Consume/Expel Windows ───
+    // Workspace navigation
+    Mod+Tab       { focus-workspace-down; }
+    Mod+Alt+Left  { focus-workspace-up; }
+    Mod+Alt+Right { focus-workspace-down; }
 
-Mod+BracketLeft { consume-or-expel-window-left; }
-Mod+BracketRight { consume-or-expel-window-right; }
+    // ─────────────────────────────────────────────────────────────────────────
+    // WINDOW MANAGEMENT
+    // ─────────────────────────────────────────────────────────────────────────
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// SCREENSHOTS
-// ═══════════════════════════════════════════════════════════════════════════════
+    // Close Window - Mod+Q (with sound)
+    Mod+Q { spawn "sh" "-c" "sound-system window-close && niri msg action close-window"; }
 
-Mod+Print { spawn "bash" "-c" "grim ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && sound-system screenshot"; }
-Ctrl+Print { spawn "bash" "-c" "niri msg action screenshot-screen"; }
-Alt+Print { spawn "bash" "-c" "niri msg action screenshot-window"; }
-Mod+Shift+Print { spawn "bash" "-c" "grim -g &quot;$(slurp)&quot; ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && sound-system screenshot"; }
+    // Window states
+    Mod+D { maximize-column; }
+    Mod+F { fullscreen-window; }
+    Mod+A { toggle-window-floating; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// AUDIO CONTROLS
-// ═══════════════════════════════════════════════════════════════════════════════
+    // Focus (arrow keys + vim keys)
+    // NOTE: Mod+H is reserved for KeyHints — use Mod+Left for focus-column-left
+    Mod+Left  { focus-column-left; }
+    Mod+Down  { focus-window-down; }
+    Mod+Up    { focus-window-up; }
+    Mod+Right { focus-column-right; }
+    Mod+J     { focus-window-down; }
+    Mod+K     { focus-window-up; }
+    Mod+L     { focus-column-right; }
 
-XF86AudioMute { spawn "sound-system" "mute"; }
-XF86AudioRaiseVolume { spawn "sound-system" "volume-up"; }
-XF86AudioLowerVolume { spawn "sound-system" "volume-down"; }
-XF86AudioMicMute { spawn "sound-system" "mic-mute"; }
+    // Move windows/columns
+    Mod+Ctrl+Left  { move-column-left; }
+    Mod+Ctrl+Down  { move-window-down; }
+    Mod+Ctrl+Up    { move-window-up; }
+    Mod+Ctrl+Right { move-column-right; }
+    Mod+Ctrl+H     { move-column-left; }
+    Mod+Ctrl+J     { move-window-down; }
+    Mod+Ctrl+K     { move-window-up; }
+    Mod+Ctrl+L     { move-column-right; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// MEDIA CONTROLS
-// ═══════════════════════════════════════════════════════════════════════════════
+    Mod+Home      { focus-column-first; }
+    Mod+End       { focus-column-last; }
+    Mod+Ctrl+Home { move-column-to-first; }
+    Mod+Ctrl+End  { move-column-to-last; }
 
-XF86AudioPlay { spawn "playerctl" "play-pause"; }
-XF86AudioNext { spawn "playerctl" "next"; }
-XF86AudioPrev { spawn "playerctl" "previous"; }
-XF86AudioStop { spawn "playerctl" "stop"; }
+    // Monitor focus
+    Mod+Shift+Left  { focus-monitor-left; }
+    Mod+Shift+Down  { focus-monitor-down; }
+    Mod+Shift+Up    { focus-monitor-up; }
+    Mod+Shift+Right { focus-monitor-right; }
+    Mod+Shift+H     { focus-monitor-left; }
+    Mod+Shift+J     { focus-monitor-down; }
+    Mod+Shift+K     { focus-monitor-up; }
+    Mod+Shift+L     { focus-monitor-right; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// BRIGHTNESS
-// ═══════════════════════════════════════════════════════════════════════════════
+    // Move column to monitor
+    Mod+Shift+Ctrl+Left  { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+Down  { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+Up    { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+Right { move-column-to-monitor-right; }
+    Mod+Shift+Ctrl+H     { move-column-to-monitor-left; }
+    Mod+Shift+Ctrl+J     { move-column-to-monitor-down; }
+    Mod+Shift+Ctrl+K     { move-column-to-monitor-up; }
+    Mod+Shift+Ctrl+L     { move-column-to-monitor-right; }
 
-XF86MonBrightnessUp { spawn "brightnessctl" "set" "+5%"; }
-XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+    // Workspace up/down (Page keys + U/I)
+    Mod+Page_Down      { focus-workspace-down; }
+    Mod+Page_Up        { focus-workspace-up; }
+    Mod+U              { focus-workspace-down; }
+    Mod+I              { focus-workspace-up; }
+    Mod+Ctrl+Page_Down { move-column-to-workspace-down; }
+    Mod+Ctrl+Page_Up   { move-column-to-workspace-up; }
+    Mod+Ctrl+U         { move-column-to-workspace-down; }
+    Mod+Ctrl+I         { move-column-to-workspace-up; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// SYSTEM
-// ═══════════════════════════════════════════════════════════════════════════════
+    Mod+Shift+Page_Down { move-workspace-down; }
+    Mod+Shift+Page_Up   { move-workspace-up; }
+    Mod+Shift+U         { move-workspace-down; }
+    Mod+Shift+I         { move-workspace-up; }
 
-Mod+Shift+P { power-off-monitors; }
-Mod+Shift+Slash { toggle-hotkey-overlay; }
-Mod+Alt+L { spawn "swaylock"; }
-Mod+Ctrl+Escape { quit; }
-Ctrl+Alt+Delete { quit; }
+    // Mouse wheel workspace/column navigation
+    Mod+WheelScrollDown      cooldown-ms=150 { focus-workspace-down; }
+    Mod+WheelScrollUp        cooldown-ms=150 { focus-workspace-up; }
+    Mod+Ctrl+WheelScrollDown cooldown-ms=150 { move-column-to-workspace-down; }
+    Mod+Ctrl+WheelScrollUp   cooldown-ms=150 { move-column-to-workspace-up; }
 
-// ─── Config Management ───
+    Mod+WheelScrollRight      { focus-column-right; }
+    Mod+WheelScrollLeft       { focus-column-left; }
+    Mod+Ctrl+WheelScrollRight { move-column-right; }
+    Mod+Ctrl+WheelScrollLeft  { move-column-left; }
 
-Mod+Shift+Ctrl+R { spawn "niri" "msg" "action" "reload-config"; }
-Mod+Shift+Ctrl+V { spawn "bash" "-c" "niri validate && notify-send 'Niri' 'Config validated successfully'"; }
+    Mod+Shift+WheelScrollDown      { focus-column-right; }
+    Mod+Shift+WheelScrollUp        { focus-column-left; }
+    Mod+Ctrl+Shift+WheelScrollDown { move-column-right; }
+    Mod+Ctrl+Shift+WheelScrollUp   { move-column-left; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// AUDIO ROUTING
-// ═══════════════════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────────────────────────────
+    // SCREENSHOTS
+    // ─────────────────────────────────────────────────────────────────────────
 
-Mod+A { spawn "qpwgraph"; }
-Mod+Shift+A { spawn "pavucontrol"; }
+    Mod+F10  hotkey-overlay-title="Take screenshot"   { spawn "sh" "-c" "grim ~/Pictures/Screenshots/$(date +%Y%m%d-%H%M%S).png && sound-system screenshot"; }
+    Ctrl+F10 hotkey-overlay-title="Screenshot screen" { screenshot-screen; }
+    Alt+F10  hotkey-overlay-title="Screenshot window" { screenshot-window; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
-// WALLPAPER
-// ═══════════════════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────────────────────────────
+    // AUDIO CONTROLS (with J.A.R.V.I.S. feedback)
+    // ─────────────────────────────────────────────────────────────────────────
 
-Mod+Shift+W { spawn "bash" "-c" "swww img $(find ~/.config/wehttamsnaps/wallpapers -type f | shuf -n1)"; }
+    //XF86AudioRaiseVolume allow-when-locked=true { spawn "sound-system" "volume-up"; }
+    //XF86AudioLowerVolume allow-when-locked=true { spawn "sound-system" "volume-down"; }
+    //XF86AudioMute        allow-when-locked=true { spawn "sound-system" "mute"; }
+    //XF86AudioMicMute     allow-when-locked=true { spawn "sound-system" "mic-mute"; }
 
-// ═══════════════════════════════════════════════════════════════════════════════
+    // ─────────────────────────────────────────────────────────────────────────
+    // MEDIA CONTROLS
+    // ─────────────────────────────────────────────────────────────────────────
+
+    //XF86AudioPlay allow-when-locked=true { spawn-sh "playerctl play-pause"; }
+    //XF86AudioStop allow-when-locked=true { spawn-sh "playerctl stop"; }
+    //XF86AudioPrev allow-when-locked=true { spawn-sh "playerctl previous"; }
+    //XF86AudioNext allow-when-locked=true { spawn-sh "playerctl next"; }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // BRIGHTNESS
+    // ─────────────────────────────────────────────────────────────────────────
+
+    //XF86MonBrightnessUp   { spawn "brightnessctl" "set" "+5%"; }
+    //XF86MonBrightnessDown { spawn "brightnessctl" "set" "5%-"; }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // SYSTEM
+    // ─────────────────────────────────────────────────────────────────────────
+
+    // Power off - Mod+Shift+Ctrl+P (safer distance from Mod+P Spotify)
+    Mod+Shift+Ctrl+P { spawn "systemctl" "poweroff"; }
+
+    // Show hotkey overlay
+    Mod+Shift+Slash  { show-hotkey-overlay; }
+
+    // Lock screen - Mod+Alt+L
+    Mod+Alt+L { spawn "lock-session"; }
+
+    // Config Reload - Mod+Shift+R
+    Mod+Shift+R { spawn "sh" "-c" "niri msg action load-config-file && sound-system reload"; }
+
+} // end binds
+
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 // END OF KEYBINDINGS
-// ═══════════════════════════════════════════════════════════════════════════════
+// ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

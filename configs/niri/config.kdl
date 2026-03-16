@@ -41,10 +41,3 @@ include "conf.d/40-startup.kdl"
 
 // Animation settings
 include "conf.d/50-animations.kdl"
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// SPAWN SETTINGS
-// ═══════════════════════════════════════════════════════════════════════════════
-
-spawn-at-startup "bash" "-c" "source ~/.config/wehttamsnaps/scripts/sound-system startup"
-spawn-at-startup "bash" "-c" "python3 ~/.config/wehttamsnaps/scripts/wehttamsnaps-welcome.py"

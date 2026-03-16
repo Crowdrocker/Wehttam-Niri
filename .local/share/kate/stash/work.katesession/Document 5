@@ -1,0 +1,15 @@
+sudo cp -a /home/wehttamsnaps/.icons/. /usr/share/icons/
+sudo cp -a /home/wehttamsnaps/.themes/. /usr/share/themes/
+sudo cp -a /home/wehttamsnaps/.fonts/. /usr/share/fonts/
+sudo cp -a /home/wehttamsnaps/.icons/. /usr/share/icons/
+
+
+
+
+
+
+
+
+
+
+

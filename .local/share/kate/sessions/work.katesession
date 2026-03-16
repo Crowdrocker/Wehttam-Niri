@@ -1,0 +1,296 @@
+[Document 0]
+URL=file:///run/media/wehttamsnaps/GAMEDRIVE/linux-20240108T071141Z-001/store passwords, notes.txt
+
+[Document 1]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/To remove cache and orphans on Arch Linux.txt
+
+[Document 10]
+URL=
+stashedFile=/home/wehttamsnaps/.local/share/kate/stash/work.katesession/Document 10
+
+[Document 11]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/how to export pkg list.md
+
+[Document 12]
+URL=file:///home/wehttamsnaps/Documents/7c5e0c86-a8c5-4759-b6a8-c71ad9b48ca9/Jarvis-Niri/README.md
+
+[Document 2]
+URL=
+stashedFile=/home/wehttamsnaps/.local/share/kate/stash/work.katesession/Document 2
+
+[Document 3]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Arch Linux Niri setup with WehttamSnaps branding/steam_launch_options.md
+
+[Document 4]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/STEAMLAUNCH.md
+
+[Document 5]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/docs/PostInstall-CopyFiles.md
+
+[Document 6]
+URL=
+stashedFile=/home/wehttamsnaps/.local/share/kate/stash/work.katesession/Document 6
+
+[Document 7]
+URL=
+stashedFile=/home/wehttamsnaps/.local/share/kate/stash/work.katesession/Document 7
+
+[Document 8]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Voice command system for Niri with Jarvis AI/notes.md
+
+[Document 9]
+URL=file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Niri audio mute notification sound/notes.md
+
+[Kate Plugins]
+bookmarksplugin=false
+cmaketoolsplugin=false
+compilerexplorer=false
+eslintplugin=false
+externaltoolsplugin=true
+formatplugin=false
+katebacktracebrowserplugin=false
+katebuildplugin=false
+katecloseexceptplugin=false
+katecolorpickerplugin=false
+katectagsplugin=false
+katefilebrowserplugin=false
+katefiletreeplugin=true
+kategdbplugin=false
+kategitblameplugin=false
+kategpgplugin=false
+katekonsoleplugin=true
+kateprojectplugin=true
+katereplicodeplugin=false
+katesearchplugin=true
+katesnippetsplugin=false
+katesqlplugin=false
+katesymbolviewerplugin=false
+katexmlcheckplugin=false
+katexmltoolsplugin=false
+keyboardmacrosplugin=false
+ktexteditorpreviewplugin=false
+latexcompletionplugin=false
+lspclientplugin=true
+openlinkplugin=false
+rainbowparens=false
+rbqlplugin=false
+tabswitcherplugin=true
+templateplugin=false
+textfilterplugin=true
+
+[MainWindow0]
+Active ViewSpace=0
+Kate-MDI-H-Splitter=200,1646,0
+Kate-MDI-Sidebar-0-Bar-0-TvList=kate_private_plugin_katefiletreeplugin,kateproject,kateprojectgit,lspclient_symbol_outline
+Kate-MDI-Sidebar-0-LastSize=200
+Kate-MDI-Sidebar-0-SectSizes=0
+Kate-MDI-Sidebar-0-Splitter=835
+Kate-MDI-Sidebar-1-Bar-0-TvList=
+Kate-MDI-Sidebar-1-LastSize=200
+Kate-MDI-Sidebar-1-SectSizes=0
+Kate-MDI-Sidebar-1-Splitter=835
+Kate-MDI-Sidebar-2-Bar-0-TvList=
+Kate-MDI-Sidebar-2-LastSize=200
+Kate-MDI-Sidebar-2-SectSizes=0
+Kate-MDI-Sidebar-2-Splitter=1646
+Kate-MDI-Sidebar-3-Bar-0-TvList=output,diagnostics,kate_plugin_katesearch,kateprojectinfo,kate_private_plugin_katekonsoleplugin
+Kate-MDI-Sidebar-3-LastSize=216
+Kate-MDI-Sidebar-3-SectSizes=0
+Kate-MDI-Sidebar-3-Splitter=1550
+Kate-MDI-Sidebar-Style=2
+Kate-MDI-Sidebar-Visible=true
+Kate-MDI-ToolView-diagnostics-Position=3
+Kate-MDI-ToolView-diagnostics-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-diagnostics-Visible=false
+Kate-MDI-ToolView-kate_plugin_katesearch-Position=3
+Kate-MDI-ToolView-kate_plugin_katesearch-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_plugin_katesearch-Visible=true
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Position=0
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katefiletreeplugin-Visible=true
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Position=3
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kate_private_plugin_katekonsoleplugin-Visible=false
+Kate-MDI-ToolView-kateproject-Position=0
+Kate-MDI-ToolView-kateproject-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateproject-Visible=false
+Kate-MDI-ToolView-kateprojectgit-Position=0
+Kate-MDI-ToolView-kateprojectgit-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateprojectgit-Visible=false
+Kate-MDI-ToolView-kateprojectinfo-Position=3
+Kate-MDI-ToolView-kateprojectinfo-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-kateprojectinfo-Visible=false
+Kate-MDI-ToolView-lspclient_symbol_outline-Position=0
+Kate-MDI-ToolView-lspclient_symbol_outline-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-lspclient_symbol_outline-Visible=false
+Kate-MDI-ToolView-output-Position=3
+Kate-MDI-ToolView-output-Show-Button-In-Sidebar=true
+Kate-MDI-ToolView-output-Visible=false
+Kate-MDI-V-Splitter=0,618,216
+
+[MainWindow0 Settings]
+WindowState=8
+
+[MainWindow0-Splitter 0]
+Children=MainWindow0-ViewSpace 0
+Orientation=1
+Sizes=1646
+
+[MainWindow0-ViewSpace 0]
+Active View=12
+Count=10
+Documents=0,1,3,2,4,5,6,7,8,9,10,11,12
+View 0=3
+View 1=2
+View 2=5
+View 3=6
+View 4=7
+View 5=8
+View 6=9
+View 7=10
+View 8=11
+View 9=12
+
+[MainWindow0-ViewSpace 0 1]
+CursorColumn=59
+CursorLine=10
+
+[MainWindow0-ViewSpace 0 10]
+CursorColumn=54
+CursorLine=11
+
+[MainWindow0-ViewSpace 0 11]
+CursorColumn=0
+CursorLine=1
+
+[MainWindow0-ViewSpace 0 12]
+CursorColumn=6
+CursorLine=289
+
+[MainWindow0-ViewSpace 0 2]
+CursorColumn=0
+CursorLine=19
+ScrollLine=5
+
+[MainWindow0-ViewSpace 0 3]
+CursorColumn=0
+CursorLine=57
+ScrollLine=40
+
+[MainWindow0-ViewSpace 0 4]
+CursorColumn=158
+CursorLine=19
+
+[MainWindow0-ViewSpace 0 5]
+CursorColumn=78
+CursorLine=112
+ScrollLine=88
+
+[MainWindow0-ViewSpace 0 6]
+CursorColumn=164
+CursorLine=0
+
+[MainWindow0-ViewSpace 0 7]
+CursorColumn=79
+CursorLine=116
+ScrollLine=45
+
+[MainWindow0-ViewSpace 0 8]
+CursorColumn=0
+CursorLine=171
+ScrollLine=192
+
+[MainWindow0-ViewSpace 0 9]
+CursorColumn=37
+CursorLine=386
+ScrollLine=366
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/install_script.sh]
+ScrollLine=510
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/jarvis_manager_script.sh]
+ScrollLine=246
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/quickstart_guide.md]
+ScrollLine=367
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Niri audio mute notification sound/notes.md]
+CursorColumn=0
+CursorLine=650
+ScrollLine=725
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Voice command system for Niri with Jarvis AI/notes.md]
+CursorColumn=0
+CursorLine=167
+ScrollLine=158
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Wehttamsnaps-Niri project update and troubleshooting/notes.md]
+CursorColumn=0
+CursorLine=650
+ScrollLine=811
+
+[MainWindow0-ViewSpace 0 file:///run/media/wehttamsnaps/LINUXDRIVE-1/J.A.R.V.I.S. (Paul Bettany)-soundSetup.md]
+CursorColumn=0
+CursorLine=52
+ScrollLine=49
+
+[MainWindow0-ViewSpace 1]
+Active View=10
+Count=1
+Documents=10
+View 0=10
+
+[Open Documents]
+Count=13
+
+[Open MainWindows]
+Count=1
+
+[Plugin:kateprojectplugin:]
+projects=
+
+[Plugin:katesearchplugin:MainWindow:0]
+BinaryFiles=false
+CurrentExcludeFilter=0
+CurrentFilter=0
+ExcludeFilters=\\0
+ExpandSearchResults=false
+Filters=\\0
+FollowSymLink=false
+HiddenFiles=false
+MatchCase=false
+Place=0
+Recursive=true
+Replaces=sudo nano ,include,yay --needed --noconfirm -S\s
+Search=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri,viv,place-within-backdrop true,firefox,conf.d,rofi,jarvis-rofi-mode,Settings,Kool_Quick_Settings.sh,obs,Super+Alt+L,oh-my-zsh,/usr/share/oh-my-zsh,   \s
+SearchAsYouTypeAllProjects=true
+SearchAsYouTypeCurrentFile=true
+SearchAsYouTypeFolder=true
+SearchAsYouTypeOpenFiles=true
+SearchAsYouTypeProject=true
+SearchDiskFiles=
+SearchDiskFiless=\\0
+SizeLimit=128
+UseRegExp=false
+
+[Recent Files]
+File1[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Wehttamsnaps-Niri project update and troubleshooting/notes.md
+File10[$e]=$HOME/Documents/7c5e0c86-a8c5-4759-b6a8-c71ad9b48ca9/Jarvis-Niri/README.md
+File2[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/notes.md
+File3[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/quickstart_guide.md
+File4[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/install_script.sh
+File5[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/WehttamSnaps-Niri/files/jarvis_manager_script.sh
+File6[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/J.A.R.V.I.S. (Paul Bettany)-soundSetup.md
+File7[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Voice command system for Niri with Jarvis AI/notes.md
+File8[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/GitHub/allNewFiles/Niri audio mute notification sound/notes.md
+File9[$e]=/run/media/wehttamsnaps/LINUXDRIVE-1/how to export pkg list.md
+Name1[$e]=notes.md
+Name10[$e]=README.md
+Name2[$e]=notes.md
+Name3[$e]=quickstart_guide.md
+Name4[$e]=install_script.sh
+Name5[$e]=jarvis_manager_script.sh
+Name6[$e]=J.A.R.V.I.S. (Paul Bettany)-soundSetup.md
+Name7[$e]=notes.md
+Name8[$e]=notes.md
+Name9[$e]=how to export pkg list.md

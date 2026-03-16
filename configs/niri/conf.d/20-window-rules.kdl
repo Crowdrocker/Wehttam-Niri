@@ -9,38 +9,12 @@
 // FLOATING WINDOWS
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ─── System Tools ───
-window-rule {
-    match app-id="pavucontrol"
-    open-floating true
-    open-focused true
-}
-
 window-rule {
     match app-id="qpwgraph"
     open-floating true
     open-focused true
 }
 
-window-rule {
-    match app-id="blueman-manager"
-    open-floating true
-}
-
-window-rule {
-    match app-id="nm-connection-editor"
-    open-floating true
-}
-
-window-rule {
-    match app-id="gnome-calculator"
-    open-floating true
-}
-
-window-rule {
-    match app-id="gnome-control-center"
-    open-floating true
-}
 
 // ─── File Pickers & Dialogs ───
 window-rule {
@@ -63,74 +37,480 @@ window-rule {
     open-floating true
 }
 
-// ─── Applications with dialogs ───
-window-rule {
-    match app-id="firefox" title="^Picture-in-Picture$"
-    open-floating true
-    min-width 400
-    min-height 225
-}
-
 window-rule {
     match app-id="firefox" title="^Extension"
     open-floating true
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// BROWSERS
+// === STEAMTINKERLAUNCH (STL) ===
+// ═══════════════════════════════════════════════════════════════════════════════
+window-rule {
+    match app-id="^steamtinkerlaunch$"
+    match title="^SteamTinkerLaunch"
+    geometry-corner-radius 12
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
+}
+
+// STL Terminal Windows
+window-rule {
+    match app-id="^steamtinkerlaunch$"
+    match title="^SteamTinkerLaunch.*Terminal"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+// STL Configuration Windows
+window-rule {
+    match app-id="^steamtinkerlaunch$"
+    match title="^SteamTinkerLaunch.*Config"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 700; }
+}
+
+// STL Game Launch Windows
+window-rule {
+    match app-id="^steamtinkerlaunch$"
+    match title="^SteamTinkerLaunch.*Launch"
+    open-floating false
+    default-column-width { proportion 0.8; }
+}
+
+// === VORTEX MOD MANAGER ===
+window-rule {
+    match app-id="^vortex$"
+    match title="^Vortex"
+    geometry-corner-radius 12
+    open-floating true
+    default-column-width { fixed 1600; }
+    default-window-height { fixed 1000; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// // Vortex Game Selection Dialog
+// ═══════════════════════════════════════════════════════════════════════════════
+// Vortex Game Selection Dialog
+window-rule {
+    match app-id="^vortex$"
+    match title="^Vortex.*Select.*Game"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+// Vortex Plugin/Mod Management
+window-rule {
+    match app-id="^vortex$"
+    match title="^Vortex.*Plugin$|^Vortex.*Mod"
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 800; }
+
+}
+
+// Vortex Deployment Log
+window-rule {
+    match app-id="^vortex$"
+    match title="^Vortex.*Deployment$|^Vortex.*Log"
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 700; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === MOD ORGANIZER 2 ===
+// ═══════════════════════════════════════════════════════════════════════════════
+window-rule {
+    match app-id="^modorganizer2$|^mo2$"
+    match title="^Mod Organizer"
+    geometry-corner-radius 12
+    open-floating true
+    default-column-width { fixed 1500; }
+    default-window-height { fixed 950; }
+    border {
+        width 2
+        active-gradient from="#f38ba8" to="#89b4fa" angle=90 relative-to="workspace-view"
+        inactive-gradient from="#313244" to="#45475a" angle=90 relative-to="workspace-view"
+    }
+
+    focus-ring {
+        width 3
+        active-gradient from="#f9e2af" to="#a6e3a1" angle=90 relative-to="workspace-view"
+        inactive-gradient from="#45475a" to="#585b70" angle=90 relative-to="workspace-view"
+    }
+}
+
+// MO2 Mod List
+window-rule {
+    match app-id="^modorganizer2$|^mo2$"
+    match title="^Mod Organizer.*Mod List"
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 800; }
+}
+
+// MO2 Plugin Tab
+window-rule {
+    match app-id="^modorganizer2$|^mo2$"
+    match title="^Mod Organizer.*Plugin"
+    open-floating true
+    default-column-width { fixed 1100; }
+    default-window-height { fixed 750; }
+}
+
+// MO2 Archive Management
+window-rule {
+    match app-id="^modorganizer2$|^mo2$"
+    match title="^Mod Organizer.*Archive"
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 700; }
+}
+
+// MO2 Executable Launch
+window-rule {
+    match app-id="^modorganizer2$|^mo2$"
+    match title="^Mod Organizer.*Executables"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 650; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === WABBAJACK ===
+// ═══════════════════════════════════════════════════════════════════════════════
+window-rule {
+    match app-id="^wabbajack$"
+    match title="^Wabbajack"
+    geometry-corner-radius 12
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
+}
+
+// Wabbajack Download Progress
+window-rule {
+    match app-id="^wabbajack$"
+    match title="^Wabbajack.*Download$|^Wabbajack.*Progress"
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 600; }
+}
+
+// Wabbajack Mod Selection
+window-rule {
+    match app-id="^wabbajack$"
+    match title="^Wabbajack.*Select$|^Wabbajack.*Choose"
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 800; }
+}
+
+// Wabbajack Installation Log
+window-rule {
+    match app-id="^wabbajack$"
+    match title="^Wabbajack.*Log$|^Wabbajack.*Console"
+    open-floating true
+    default-column-width { fixed 1100; }
+    default-window-height { fixed 750; }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === GENERAL MODDING TOOLS ===
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// Firefox - Workspace 1 (Browser)
+// Nexus Mod Manager (if used alongside Vortex/MO2)
 window-rule {
-    match app-id="firefox"
-    open-on-workspace "browser"
-    open-maximized true
+    match app-id="^nexusmodmanager$|^nmm$"
+    match title="^Nexus Mod Manager"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1200; }
+    default-window-height { fixed 800; }
 }
 
-// Brave - Workspace 1
+// LOOT (Load Order Optimization Tool)
 window-rule {
-    match app-id="brave-browser"
-    open-on-workspace "browser"
+    match app-id="^loot$"
+    match title="^LOOT"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1300; }
+    default-window-height { fixed 850; }
 }
 
-// Chrome - Workspace 1
+// xEdit (TESEdit/FOEdit/SSEEdit)
 window-rule {
-    match app-id="google-chrome"
-    open-on-workspace "browser"
+    match app-id="^xedit$|^tesedit$|^foedit$|^sseedit$"
+    match title="^xEdit$|^TESVEdit$|^FO4Edit$|^SSEEdit$"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
 }
+
+// Creation Kit / Creation Engine
+window-rule {
+    match app-id="^creationkit$|^ck64$"
+    match title="^Creation Kit"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1600; }
+    default-window-height { fixed 1000; }
+}
+
+// Bodyslide Studio
+window-rule {
+    match app-id="^bodyslide$|^outfitstudio$"
+    match title="^BodySlide$|^Outfit Studio"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
+}
+
+// FNIS / Nemesis Animation Tools
+window-rule {
+    match app-id="^fnis$|^nemesis$"
+    match title="^FNIS$|^GenerateFNISForMod$|^Nemesis"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 650; }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === MODDING FILE MANAGERS ===
+// ═══════════════════════════════════════════════════════════════════════════════
+window-rule {
+    match app-id="^winetricks$"
+    match title="^winetricks"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+// Winecfg (Wine configuration)
+window-rule {
+    match app-id="^winecfg$"
+    match title="^Wine configuration"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 700; }
+    default-window-height { fixed 550; }
+}
+
+// Archive Viewer (7-zip, etc. for mod archives)
+window-rule {
+    match app-id="^p7zip$|^ark$|^file-roller$"
+    match title="^Archive|^7-Zip|^ark"
+    open-floating true
+    default-column-width { fixed 900; }
+    default-window-height { fixed 650; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === MODDING WEB TOOLS ===
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Modding websites as webapps
+window-rule {
+    match app-id="^nexusmods-webapp$"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1400; }
+    default-window-height { fixed 900; }
+}
+
+window-rule {
+    match app-id="^loot-webapp$"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1300; }
+    default-window-height { fixed 850; }
+
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === MODDING TERMINALS ===
+// ═══════════════════════════════════════════════════════════════════════════════
+
+window-rule {
+    match title="^modding$|^stl$|^vortex$|^mo2"
+    geometry-corner-radius 8
+    open-floating true
+    default-column-width { fixed 1000; }
+    default-window-height { fixed 700; }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// TERMINAL
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Modding terminal windows (for CLI tools)
+window-rule {
+    match app-id="com.mitchellh.ghostty|^kitty$|^alacritty$"
+    geometry-corner-radius 8
+    open-floating false
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// === SPECIAL MODDING FEATURES ===
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Force focus on modding dialogs
+window-rule {
+    match app-id="^steamtinkerlaunch$|^vortex$|^modorganizer2$"
+    match title="^Progress$|^Downloading$|^Installing$|^Deploying$"
+    match is-focused=true
+}
+
+//  Picture-in-Picture always floats
+window-rule {
+    match app-id="firefox$" title="^Picture-in-Picture$"
+    match app-id="brave-browser$" title="^Picture-in-Picture$"
+    match app-id="Vivaldi-stable$" title="^Picture-in-Picture$"
+    match title="Picture-in-Picture"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// ──────────────────────── UTILITY WINDOWS ─────────────────────────────────────
+// ═══════════════════════════════════════════════════════════════════════════════
+// System utilities should float
+window-rule {
+    match app-id=r#"^gnome-calculator$"#
+    match app-id=r#"^galculator$"#
+    match app-id=r#"^blueman-manager$"#
+    match app-id=r#"^pavucontrol$"#
+    match app-id=r#"^nm-connection-editor$"#
+    match app-id="^helvum$"
+    match title="^KeyHints$"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+// Settings windows
+window-rule {
+    match app-id=r#"^gnome-control-center$"#
+    match app-id="^nwg-look$"
+    match app-id="^nwg-displays$"
+    match app-id="^nwg-drawer$"
+    match app-id="^lxappearance$"
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
+}
+
+
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// LAYER RULES
+// ═══════════════════════════════════════════════════════════════════════════════
+
+// Default rounded corners for all windows
+window-rule {
+    geometry-corner-radius 20
+    clip-to-geometry true
+}
+
+// Inactive window opacity
+window-rule {
+    match is-active=false
+    opacity 0.9
+}
+
+// Gnome apps with special styling
+window-rule {
+    match app-id=r#"^org\.gnome\."#
+    draw-border-with-background false
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
+
+// Zoom floating windows
+window-rule {
+    match app-id="zoom"
+    open-floating true
+}
+layer-rule {
+    match namespace="^swww-daemon$"
+    place-within-backdrop true
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// screencasts SETTINGS
+// ═══════════════════════════════════════════════════════════════════════════════
+// Block out password managers from screencasts.
+window-rule {
+    match app-id=r#"^org\.keepassxc\.KeePassXC$"#
+    match app-id=r#"^org\.gnome\.World\.Secrets$"#
+    block-out-from "screencast"
+}
+// Block out mako notifications from screencasts.
+layer-rule {
+    match namespace="^notifications$"
+    block-out-from "screencast"
+}
+// Indicate screencasted windows with red colors.
+window-rule {
+    match is-window-cast-target=true
+
+    focus-ring {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+
+    border {
+        inactive-color "#7d0d2d"
+    }
+
+    shadow {
+        color "#7d0d2d70"
+    }
+
+    tab-indicator {
+        active-color "#f38ba8"
+        inactive-color "#7d0d2d"
+    }
+}
+
+// ═══════════════════════════════════════════════════════════════════════════════
+// Generic webapp rule (catches all webapps)
+// ═══════════════════════════════════════════════════════════════════════════════
+
+window-rule {
+    match app-id=r#"^.*-webapp$"#
+    geometry-corner-radius 12
+    open-floating true
+    default-column-width { fixed 1300; }
+    default-window-height { fixed 850; }
+
+    focus-ring {
+        width 3
+        active-gradient from="#89b4fa" to="#b4c8fa" angle=45 relative-to="workspace-view"
+        inactive-gradient from="#45475a" to="#585b70" angle=45 relative-to="workspace-view"
+    }
+}
+
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // GAMING
 // ═══════════════════════════════════════════════════════════════════════════════
-
-// Steam - Workspace 3 (Gaming)
-window-rule {
-    match app-id="steam"
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match app-id="steam" title="^Steam"
-    open-fullscreen true
-}
-
-// Steam Big Picture Mode
-window-rule {
-    match app-id="steam" title="Steam Big Picture Mode"
-    open-fullscreen true
-}
-
-// Lutris
-window-rule {
-    match app-id="lutris"
-    open-on-workspace "gaming"
-}
-
-// Heroic Games Launcher
-window-rule {
-    match app-id="heroic"
-    open-on-workspace "gaming"
-}
 
 // ProtonUp-Qt
 window-rule {
@@ -138,198 +518,25 @@ window-rule {
     open-floating true
 }
 
-// Games (common patterns)
-window-rule {
-    match title=".*Steam App:.*"
-    open-fullscreen true
-}
-
-window-rule {
-    match title="Cyberpunk 2077"
-    open-fullscreen true
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match title="Fallout4"
-    open-fullscreen true
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match title="The Division 2"
-    open-fullscreen true
-    open-on-workspace "gaming"
-}
-
-// ─── Game launchers ───
-window-rule {
-    match app-id="battle.net.exe"
-    open-on-workspace "gaming"
-}
-
-window-rule {
-    match app-id="UbisoftConnect.exe"
-    open-on-workspace "gaming"
-}
-
 // ═══════════════════════════════════════════════════════════════════════════════
-// STREAMING / OBS
+// === WELCOME APP ===
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// OBS Studio - Workspace 4 (Streaming)
+// WehttamSnaps welcome screen
 window-rule {
-    match app-id="obs"
-    open-on-workspace "streaming"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// PHOTOGRAPHY
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// GIMP - Workspace 5 (Photography)
-window-rule {
-    match app-id="gimp"
-    open-on-workspace "photography"
+    match title="Welcome to WehttamSnaps"
+    match app-id="^python3$|^python$"
+    open-floating true
+    block-out-from "screencast"
+    //block-out-from "screen-capture" // Keeps it private if you stream
 }
 
 window-rule {
-    match app-id="gimp-2.10"
-    open-on-workspace "photography"
+    match title="J.A.R.V.I.S. Command Protocols" // Match your welcome app title
+    open-floating true
+    default-column-width { fixed 800; }
+    default-window-height { fixed 600; }
 }
-
-// Darktable
-window-rule {
-    match app-id="darktable"
-    open-on-workspace "photography"
-}
-
-// Krita
-window-rule {
-    match app-id="krita"
-    open-on-workspace "photography"
-}
-
-// Inkscape
-window-rule {
-    match app-id="inkscape"
-    open-on-workspace "photography"
-}
-
-// DigiKam
-window-rule {
-    match app-id="digikam"
-    open-on-workspace "photography"
-}
-
-// RawTherapee
-window-rule {
-    match app-id="rawtherapee"
-    open-on-workspace "photography"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// VIDEO EDITING
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// DaVinci Resolve
-window-rule {
-    match app-id="resolve"
-    open-on-workspace "media"
-}
-
-// Kdenlive
-window-rule {
-    match app-id="kdenlive"
-    open-on-workspace "media"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// COMMUNICATION
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// Discord - Workspace 7 (Communication)
-window-rule {
-    match app-id="discord"
-    open-on-workspace "communication"
-}
-
-// Telegram
-window-rule {
-    match app-id="telegramdesktop"
-    open-on-workspace "communication"
-}
-
-// Slack
-window-rule {
-    match app-id="slack"
-    open-on-workspace "communication"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// MUSIC
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// Spotify - Workspace 8 (Music)
-window-rule {
-    match app-id="spotify"
-    open-on-workspace "music"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// FILE MANAGERS
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// Thunar - Workspace 9 (Files)
-window-rule {
-    match app-id="thunar"
-    open-on-workspace "files"
-}
-
-// Dolphin
-window-rule {
-    match app-id="dolphin"
-    open-on-workspace "files"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// TERMINAL
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// Ghostty - Workspace 2 (Terminal/Dev)
-window-rule {
-    match app-id="ghostty"
-    open-on-workspace "terminal"
-}
-
-// Kitty
-window-rule {
-    match app-id="kitty"
-    open-on-workspace "terminal"
-}
-
-// Alacritty
-window-rule {
-    match app-id="Alacritty"
-    open-on-workspace "terminal"
-}
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// DEVELOPMENT
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// VS Code
-window-rule {
-    match app-id="code"
-    open-on-workspace "terminal"
-}
-
-// Kate
-window-rule {
-    match app-id="kate"
-    open-on-workspace "terminal"
-}
-
 // ═══════════════════════════════════════════════════════════════════════════════
 // SCREEN SHARING / SCREEN RECORDING
 // ═══════════════════════════════════════════════════════════════════════════════
@@ -340,6 +547,36 @@ window-rule {
     open-floating true
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// Noctalia Shell / Quickshell
+// ═══════════════════════════════════════════════════════════════════════════════
+window-rule {
+    // Rounded corners for a modern look.
+    geometry-corner-radius 20
+
+    // Clips window contents to the rounded corner boundaries.
+    clip-to-geometry true
+}
+
+// Set the regular wallpaper on the backdrop.
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+
+// Optionally, disable the workspace shadows in the overview.
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
+// Quickshell / Noctalia windows
+window-rule {
+    match app-id="^qs$"
+    match app-id="^quickshell$"
+    open-floating true
+}
 // ═══════════════════════════════════════════════════════════════════════════════
 // EXCLUDED FROM SCREENSHOTS
 // ═══════════════════════════════════════════════════════════════════════════════

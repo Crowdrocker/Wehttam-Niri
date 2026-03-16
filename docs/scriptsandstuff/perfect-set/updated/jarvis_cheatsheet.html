@@ -1,0 +1,172 @@
+
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: var(--font-mono); }
+  .wrap { padding: 1rem 0; }
+  .header { display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .logo { width: 32px; height: 32px; border-radius: 50%; background: var(--color-background-info); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 500; color: var(--color-text-info); flex-shrink: 0; }
+  .header-text h1 { font-size: 15px; font-weight: 500; color: var(--color-text-primary); }
+  .header-text p { font-size: 12px; color: var(--color-text-secondary); margin-top: 2px; }
+  .section { margin-bottom: 1.25rem; }
+  .section-title { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px; padding-left: 2px; }
+  .grid { display: grid; gap: 6px; }
+  .grid-2 { grid-template-columns: 1fr 1fr; }
+  .grid-3 { grid-template-columns: 1fr 1fr 1fr; }
+  .row { display: flex; align-items: center; gap: 8px; background: var(--color-background-secondary); border-radius: var(--border-radius-md); padding: 7px 10px; border: 0.5px solid var(--color-border-tertiary); }
+  .row.new { border-color: var(--color-border-success); }
+  .row.fixed { border-color: var(--color-border-warning); }
+  .kbd { font-family: var(--font-mono); font-size: 11px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: 4px; padding: 2px 6px; color: var(--color-text-primary); white-space: nowrap; flex-shrink: 0; }
+  .desc { font-size: 12px; color: var(--color-text-secondary); flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .sound { font-size: 11px; color: var(--color-text-info); background: var(--color-background-info); border-radius: 3px; padding: 1px 5px; white-space: nowrap; flex-shrink: 0; }
+  .sound.idroid { color: var(--color-text-success); background: var(--color-background-success); }
+  .divider { height: 0.5px; background: var(--color-border-tertiary); margin: 1.25rem 0; }
+  .cli-section { background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; }
+  .cli-header { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); padding: 8px 12px; border-bottom: 0.5px solid var(--color-border-tertiary); text-transform: uppercase; letter-spacing: 0.06em; }
+  .cli-rows { padding: 8px 0; }
+  .cli-row { display: flex; align-items: baseline; gap: 10px; padding: 4px 12px; }
+  .cli-row:hover { background: var(--color-background-primary); }
+  .cli-cmd { font-family: var(--font-mono); font-size: 12px; color: var(--color-text-info); white-space: nowrap; min-width: 220px; }
+  .cli-desc { font-size: 12px; color: var(--color-text-secondary); }
+  .add-steps { background: var(--color-background-secondary); border-radius: var(--border-radius-md); border: 0.5px solid var(--color-border-tertiary); overflow: hidden; }
+  .step { display: flex; align-items: flex-start; gap: 10px; padding: 10px 12px; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .step:last-child { border-bottom: none; }
+  .step-num { font-size: 11px; font-weight: 500; color: var(--color-text-info); background: var(--color-background-info); border-radius: 50%; width: 20px; height: 20px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+  .step-body { flex: 1; }
+  .step-title { font-size: 13px; font-weight: 500; color: var(--color-text-primary); margin-bottom: 4px; }
+  .step-code { font-family: var(--font-mono); font-size: 11px; color: var(--color-text-secondary); background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 4px; padding: 6px 8px; margin-top: 4px; white-space: pre; overflow-x: auto; line-height: 1.6; }
+  .legend { display: flex; gap: 14px; margin-bottom: 1rem; flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 11px; color: var(--color-text-secondary); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .dot-j { background: var(--color-background-info); border: 1.5px solid var(--color-border-info); }
+  .dot-i { background: var(--color-background-success); border: 1.5px solid var(--color-border-success); }
+  .dot-fix { border: 1.5px solid var(--color-border-warning); background: var(--color-background-warning); }
+  .dot-new { border: 1.5px solid var(--color-border-success); background: var(--color-background-success); }
+</style>
+<div class="wrap">
+  <div class="header">
+    <div class="logo">J</div>
+    <div class="header-text">
+      <h1>J.A.R.V.I.S. Sound System — Cheat Sheet</h1>
+      <p>WehttamSnaps · Niri · sound-system v2.0</p>
+    </div>
+  </div>
+
+  <div class="legend">
+    <div class="legend-item"><div class="dot dot-j"></div> jarvis voice</div>
+    <div class="legend-item"><div class="dot dot-i"></div> idroid voice</div>
+    <div class="legend-item"><div class="dot dot-fix"></div> fixed this session</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Core keybinds</div>
+    <div class="grid grid-2">
+      <div class="row"><span class="kbd">Mod+Return</span><span class="desc">Terminal</span><span class="sound">open-terminal</span></div>
+      <div class="row fixed"><span class="kbd">Mod+B</span><span class="desc">Brave browser</span><span class="sound">launch-browser</span></div>
+      <div class="row fixed"><span class="kbd">Mod+E</span><span class="desc">Thunar files</span><span class="sound">launch-files</span></div>
+      <div class="row"><span class="kbd">Mod+Shift+B</span><span class="desc">Firefox</span><span class="sound">launch-browser</span></div>
+      <div class="row"><span class="kbd">Mod+Shift+T</span><span class="desc">Kate editor</span><span class="sound">launch-editor</span></div>
+      <div class="row"><span class="kbd">Mod+O</span><span class="desc">OBS Studio</span><span class="sound">launch-obs</span></div>
+      <div class="row"><span class="kbd">Mod+P</span><span class="desc">Spotify</span><span class="sound">launch-spotify</span></div>
+      <div class="row"><span class="kbd">Mod+Q</span><span class="desc">Close window</span><span class="sound">window-close</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Gaming</div>
+    <div class="grid grid-2">
+      <div class="row"><span class="kbd">Mod+G</span><span class="desc">Gaming mode toggle</span><span class="sound idroid">gamemode-on/off</span></div>
+      <div class="row"><span class="kbd">Mod+Shift+S</span><span class="desc">Launch Steam</span><span class="sound idroid">steam-launch</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">System</div>
+    <div class="grid grid-2">
+      <div class="row"><span class="kbd">Mod+F10</span><span class="desc">Screenshot</span><span class="sound">screenshot</span></div>
+      <div class="row fixed"><span class="kbd">Mod+Shift+R</span><span class="desc">Reload config</span><span class="sound">reload</span></div>
+      <div class="row"><span class="kbd">Mod+Alt+L</span><span class="desc">Lock screen</span><span class="sound">—</span></div>
+      <div class="row"><span class="kbd">Mod+Slash</span><span class="desc">JARVIS command menu</span><span class="sound">—</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Audio</div>
+    <div class="grid grid-3">
+      <div class="row"><span class="kbd">Vol+</span><span class="desc">Up</span><span class="sound">volume-up</span></div>
+      <div class="row"><span class="kbd">Vol-</span><span class="desc">Down</span><span class="sound">volume-down</span></div>
+      <div class="row"><span class="kbd">Mute</span><span class="desc">Toggle</span><span class="sound">audio-mute</span></div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Workspace switching — auto voice detection</div>
+    <div class="grid grid-2">
+      <div class="row"><span class="kbd">Mod+1/4/5/8/9/10</span><span class="desc">Productivity</span><span class="sound">workspace-switch</span></div>
+      <div class="row"><span class="kbd">Mod+2/6/7</span><span class="desc">Gaming → iDroid</span><span class="sound idroid">workspace-switch</span></div>
+      <div class="row"><span class="kbd">Mod+3</span><span class="desc">Photography</span><span class="sound">workspace-switch</span></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-title">sound-system CLI reference</div>
+    <div class="cli-section">
+      <div class="cli-header">Commands</div>
+      <div class="cli-rows">
+        <div class="cli-row"><span class="cli-cmd">sound-system list</span><span class="cli-desc">Show all sounds with ✓ / ✗ status</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system status</span><span class="cli-desc">Current mode, workspace, gaming flag</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system preview &lt;name&gt; &lt;mode&gt;</span><span class="cli-desc">Test a specific sound</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system gaming-toggle</span><span class="cli-desc">Switch JARVIS ↔ iDroid manually</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system mode jarvis</span><span class="cli-desc">Force JARVIS mode</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system mode idroid</span><span class="cli-desc">Force iDroid mode</span></div>
+        <div class="cli-row"><span class="cli-cmd">sound-system test</span><span class="cli-desc">Play all sounds in sequence</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Sound file locations</div>
+    <div class="cli-section">
+      <div class="cli-rows">
+        <div class="cli-row"><span class="cli-cmd">/usr/share/wehttamsnaps/sounds/jarvis/</span><span class="cli-desc">Productivity voice</span></div>
+        <div class="cli-row"><span class="cli-cmd">/usr/share/wehttamsnaps/sounds/idroid/</span><span class="cli-desc">Gaming voice</span></div>
+        <div class="cli-row"><span class="cli-cmd">~/.cache/wehttamsnaps/sound-mode.state</span><span class="cli-desc">Current mode file</span></div>
+        <div class="cli-row"><span class="cli-cmd">~/.cache/wehttamsnaps/gaming-mode.active</span><span class="cli-desc">Gaming flag (exists = gaming on)</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="section">
+    <div class="section-title">How to add a new sound + keybind</div>
+    <div class="add-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <div class="step-title">Drop the sound file</div>
+          <div class="step-code">/usr/share/wehttamsnaps/sounds/jarvis/jarvis-launch-brave.mp3</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <div class="step-title">Add function + case to sound-system</div>
+          <div class="step-code">launch_brave() { play_sound "launch-brave"; }
+
+# in the case dispatcher:
+launch-brave) launch_brave ;;</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <div class="step-title">Wire it in 10-keybinds.kdl</div>
+          <div class="step-code">Mod+B { spawn "sh" "-c" "sound-system launch-brave && brave"; }</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

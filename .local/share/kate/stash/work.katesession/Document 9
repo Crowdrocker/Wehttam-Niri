@@ -1,0 +1,210 @@
+systemctl --user status pipewire pipewire-pulse wireplumber
+● pipewire.service - PipeWire Multimedia Service
+     Loaded: loaded (/usr/lib/systemd/user/pipewire.service; disabled; preset: enabled)
+     Active: active (running) since Thu 2026-01-08 17:31:27 CST; 2min 8s ago
+ Invocation: f2ae613011294b3f86748b49ebd4297d
+TriggeredBy: ● pipewire.socket
+   Main PID: 34463 (pipewire)
+      Tasks: 3 (limit: 19058)
+     Memory: 7.8M (peak: 9.1M)
+        CPU: 407ms
+     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire.service
+             └─34463 /usr/bin/pipewire
+
+Jan 08 17:31:27 snaps-pc systemd[1139]: Stopped PipeWire Multimedia Service.
+Jan 08 17:31:27 snaps-pc systemd[1139]: Started PipeWire Multimedia Service.
+
+● pipewire-pulse.service - PipeWire PulseAudio
+     Loaded: loaded (/usr/lib/systemd/user/pipewire-pulse.service; disabled; preset: enab>
+     Active: active (running) since Thu 2026-01-08 17:19:59 CST; 13min ago
+ Invocation: bada93c330c54affbbb260856648530c
+TriggeredBy: ● pipewire-pulse.socket
+   Main PID: 1188 (pipewire-pulse)
+      Tasks: 3 (limit: 19058)
+     Memory: 20M (peak: 21.7M)
+        CPU: 1.020s
+     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/pipewire-pulse.s>
+             └─1188 /usr/bin/pipewire-pulse
+
+Jan 08 17:19:59 snaps-pc systemd[1139]: Started PipeWire PulseAudio.
+
+● wireplumber.service - Multimedia Service Session Manager
+     Loaded: loaded (/usr/lib/systemd/user/wireplumber.service; enabled; preset: enabled)
+     Active: active (running) since Thu 2026-01-08 17:31:27 CST; 2min 8s ago
+ Invocation: 1241cd694eac4c449dab2154089aef6e
+   Main PID: 34464 (wireplumber)
+      Tasks: 6 (limit: 19058)
+     Memory: 17.3M (peak: 18M)
+        CPU: 497ms
+     CGroup: /user.slice/user-1000.slice/user@1000.service/session.slice/wireplumber.serv>
+             └─34464 /usr/bin/wireplumber
+
+Jan 08 17:31:27 snaps-pc systemd[1139]: Started Multimedia Service Session Manager.
+Jan 08 17:31:27 snaps-pc wireplumber[34464]: spa.alsa: The decibel volume range for eleme>
+Jan 08 17:31:27 snaps-pc wireplumber[34464]: spa.alsa: The decibel volume range for eleme>
+Jan 08 17:31:27 snaps-pc wireplumber[34464]: spa.alsa: The decibel volume range for eleme>
+Jan 08 17:31:27 snaps-pc wireplumber[34464]: spa.alsa: The decibel volume range for eleme>
+Jan 08 17:31:27 snaps-pc wireplumber[34464]: spa.alsa: The decibel volume range for eleme>
+Jan 08 17:31:28 snaps-pc wireplumber[34464]: wp-device: SPA handle 'api.libcamera.enum.ma>
+Jan 08 17:31:28 snaps-pc wireplumber[34464]: s-monitors-libcamera: PipeWire's libcamera S>
+
+
+--------------------------------------------------------------------------------
+
+pactl list sinks short
+31      Discord PipeWire        float32le 2ch 48000Hz   SUSPENDED
+32      Game    PipeWire        float32le 2ch 48000Hz   SUSPENDED
+33      Music   PipeWire        float32le 2ch 48000Hz   SUSPENDED
+72      alsa_output.usb-Sony_Interactive_Entertainment_Wireless_Controller-00.analog-stereo       PipeWire        s16le 2ch 32000Hz       SUSPENDED
+75      alsa_output.usb-HP__Inc_HyperX_Cloud_Alpha_Wireless_00000001-00.analog-stereo   PipeWire  s24le 2ch 48000Hz       SUSPENDED
+78      alsa_output.pci-0000_00_1b.0.analog-stereo      PipeWire        s32le 2ch 48000HzRUNNING
+525     alsa_output.pci-0000_01_00.1.hdmi-stereo-extra5 PipeWire        s32le 2ch 48000HzSUSPENDED
+545     easyeffects_sink        PipeWire        float32le 2ch 48000Hz   RUNNING
+
+-------------------------------------------------------------------------------
+
+
+journalctl --user -u pipewire -u pipewire-pulse -u wireplumber --since "5 minutes ago"
+Jan 08 17:40:54 snaps-pc wireplumber[36449]: spa.bluez5.midi: org.bluez.GattManager1.Regi>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

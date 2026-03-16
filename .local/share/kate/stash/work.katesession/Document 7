@@ -1,0 +1,117 @@
+so i found a tool call Linutil by Chris titus, it worked really good it install everything i need to get setup for fresh install. Such as Paru, yay, Chaotic-AUR, grub themes, gaming dependencies and some other stuff. After I used it, I had trouble installing pipewire-jack because of jack2 so i just removed jack2 and it worked. Also is there a way to make my own repo and save everything.
+
+Can you help me transform my notes into a professional dotfiles. I'm making a Arch Linux Niri setup. All docs are together. the package list might have a lot of unnecessary packages. I do photography and gaming and sometimes i download packages i think i may need but i really don't. I plan on using Quickshell instead of waybar. theming of Jakoolit and Quickshell functionality like END-4 and workflow from Omarchy. I'd like to include webapps if possible. Would like logo.txt on the configs for branding with github link https://github.com/Crowdrocker. Also help adding webapps to keybinds. I want to switch to thunar with Ghostty terminal. I attached a welcome app and keyhints template and was wondering if you could make changes to it to fit my setup.   Lately i've been having issues with my games like division 2 and cyberpunk crashes and some other people on ProtonDB have had the same problems but not fix that i've seen. i might not have the currect optimization and or steam launch options. Workspaces in the config gives me the most problems.
+
+My goal is to make setup on Arch Linux like my own workstation for my brand WehttamSnaps, work and gaming
+Core Goals
+- Create a personalized workstation for WehttamSnaps.
+- Achieve enhanced productivity and faster responsiveness
+- Implement smooth animations and vibrant color schemes.
+- Build a system that 'just works' for both work and gaming.
+- Fully integrate a J.A.R.V.I.S. theme with custom sounds.
+- J.A.R.V.I.S. Rofi theme
+- Fully integrate a J.A.R.V.I.S. Voice activated sound system.
+
+
+It just works!
+
+would i be able to to get the full configs as well as webapp templates, audio routing configs
+1. Compositor Choice
+    I want full configs for Niri
+2. Shell Choice
+Quickshell
+
+3. Terminal Preference
+    Ghostty
+    Font preference Fira Code
+    Color scheme (Match system theme or specific palette?) Match system theme
+4. Display Setup
+    Username: wehttamsnaps
+    SystemName: snaps-pc
+    Single monitor
+    DP-3
+    1920x1080
+    Refresh rate(s)? 60Hz
+
+I was looking threw flathub and found some apps like Gear Lever for AppImages, Bazaar for flathub apps and Faugus Launcher  to replace Lutris.  If you know of any usful apps let me know. webapp gui would be nice for setting up webapps
+I'd like Maybe 10 workspaces. i use mainly media and gaming stuff. For optimization i only have one monitor and not sure if freesync is available for me. I also would like to setup starship and fastfetch with aliases for update, clear orphans, flatpak, gaming stuff, etc.
+I'd like modding windorules for vortex, mo2 and wabbajack. so they are easier to work with
+I'd like some programs assigned to them. Also like to have some programs open in full screen like brave, steam, kate
+
+I was gifted by my neighbor his old desktop. So now i have an upgrade to work with. I have 3 SSD's 1TB, and 2 120GB, I replaced the GPU with my RX 580. Dell XPS 8700 16GB ram Core(TM) i7-4790 (8) @ 4.00 GHz RX 580 Series
+
+
+######################## Steam launch options for my steam library  ########################
+- Call of Duty HQ
+- Cyberpunk 2077
+- Fallout 4
+- FarCry5
+- Ghost Recon Breakpoint
+- Marvels Avengers
+- Need for Speed Payback
+- Rise of the Tomb Raider
+- Shadow of the Tomb Raider
+- The First Descendant
+- Tom Clancy's The Division
+- Tom Clancy's The Division 2
+- Warframe
+- Watch_Dogs
+- Watch_Dogs2
+- WatchDogs_Legion
+
+##################### AUDIO AND FUN STUFF ########################
+When I was on windows there was a program I used called voicemeter. I could separate audio such as game, browser, discord and spotify.  Is there something similar to that for Linux
+Could you make me a cheat sheet?  I could save it and follow along with it? As well as the easiest way for new users
+
+# fully integrate the J.A.R.V.I.S. theme throughout my setup!
+-J.A.R.V.I.S. Sound Pack Integration
+-Enhanced J.A.R.V.I.S. Sound Manager
+-J.A.R.V.I.S. Themed Niri Configuration
+-J.A.R.V.I.S. Enhanced Quickshell bar
+-J.A.R.V.I.S. Boot Animation
+-/usr/local/bin/jarvis
+-/usr/local/bin/jarvis-menu
+-/usr/local/bin/sound-system
+
+# J.A.R.V.I.S. Sound Pack Integration
+some iconic J.A.R.V.I.S. sounds
+All sounds i've made from https://www.101soundboards.com/ using 73296-jarvis-v1-paul-bettany-tts-computer-ai-voice and 1023595-idroid-tts-computer-ai-voice
+## Recommended Sound Mapping
+
+Here's how I'd split them for maximum immersion:
+- sound folders for idroid and jarvis located in /usr/local/bin/wehttamsnaps/sounds
+### **J.A.R.V.I.S. (Paul Bettany) - Professional Mode**
+```bash
+sounds/jarvis/
+├── startup.mp3           → "Allow me to introduce myself..."
+├── shutdown.mp3          → "Shutting down. Have a good day, Matthew."
+├── notification.mp3      → "Sir, you have a notification"
+├── audio-mute.mp3       → "Audio muted, sir"
+├── audio-unmute.mp3     → "Audio restored"
+├── volume-up.mp3        → "Volume increased"
+├── volume-down.mp3      → "Volume decreased"
+├── workspace-switch.mp3 → "Workspace changed"
+├── screenshot.mp3       → "Screenshot captured"
+└── photo-export.mp3     → "Export complete, sir"
+```
+
+### **iDroid Voice - Gaming/Tactical Mode**
+```bash
+sounds/idroid/
+├── gamemode-on.mp3      → "Combat systems online"
+├── gamemode-off.mp3     → "Returning to normal operations"
+├── alert-high.mp3       → "Alert! High priority"
+├── alert-medium.mp3     → "Caution"
+├── mission-start.mp3    → "Mission start"
+├── steam-launch.mp3     → "Game launching"
+├── discord-notify.mp3   → "Incoming transmission"
+└── performance-warn.mp3 → "System performance critical"
+```
+
+
+###### Audio Routing like Voicemeter on Linux
+----Use PipeWire with qpwgraph for advanced audio routing.
+----Pavucontrol for simple volume management.
+----Create virtual sinks and routes using qpwgraph to separate audio streams (game, browser, discord, Spotify).
+----can provide a step-by-step guide for qpwgraph and pavucontrol setup.
+-----Write scripts for J.A.R.V.I.S. sound triggers integrated with Niri events.

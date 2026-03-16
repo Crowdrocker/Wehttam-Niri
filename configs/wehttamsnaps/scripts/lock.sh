@@ -41,7 +41,7 @@ else
 fi
 
 # ── Play lock sound ───────────────────────────────────────────────────────
-sound-system notification &>/dev/null & 2>/dev/null || true
+#sound-system notification &>/dev/null & 2>/dev/null || true
 
 # ── Lock ─────────────────────────────────────────────────────────────────
 ARGS=(

@@ -6,144 +6,35 @@
 // =============================================================================
 
 animations {
-    // =========================================================================
-    // WORKSPACE TRANSITIONS - Smooth sliding with subtle depth
-    // =========================================================================
-    // Horizontal slide with perspective feel
     workspace-switch {
-        spring {
-            damping-ratio 0.8
-            epsilon 0.0001
-            stiffness 800
-        }
+        spring damping-ratio=0.80 stiffness=523 epsilon=0.0001
     }
-
-    // =========================================================================
-    // WINDOW OPEN ANIMATION - Windows gracefully appear
-    // =========================================================================
-    // Windows slide up and fade in - like emerging from the digital void
     window-open {
-        duration 300ms
-        
-        // Scale from slightly smaller
-        scale-x {
-            from 0.95
-            to 1.0
-        }
-        scale-y {
-            from 0.95
-            to 1.0
-        }
-        
-        // Fade in smoothly
-        opacity {
-            from 0.0
-            to 1.0
-        }
-        
-        // Slight upward slide
-        translation-y {
-            from 30
-            to 0
-        }
+        duration-ms 150
+        curve "ease-out-expo"
     }
-
-    // =========================================================================
-    // WINDOW CLOSE ANIMATION - Windows gracefully disappear
-    // =========================================================================
-    // Windows scale down and fade out - dissipating into the void
     window-close {
-        duration 200ms
-        
-        // Scale down slightly
-        scale-x {
-            from 1.0
-            to 0.95
-        }
-        scale-y {
-            from 1.0
-            to 0.95
-        }
-        
-        // Fade out smoothly
-        opacity {
-            from 1.0
-            to 0.0
-        }
-        
-        // Slight downward slide
-        translation-y {
-            from 0
-            to 30
-        }
+        duration-ms 150
+        curve "ease-out-quad"
     }
-
-    // =========================================================================
-    // HORIZONTAL VIEW MOVEMENT - Panning between views
-    // =========================================================================
     horizontal-view-movement {
-        spring {
-            damping-ratio 1.0
-            epsilon 0.0001
-            stiffness 900
-        }
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
     }
-
-    // =========================================================================
-    // WINDOW MOVEMENT - When dragging or resizing
-    // =========================================================================
     window-movement {
-        spring {
-            damping-ratio 1.0
-            epsilon 0.0001
-            stiffness 1000
-        }
+        spring damping-ratio=0.75 stiffness=323 epsilon=0.0001
     }
-
-    // =========================================================================
-    // CONFIGURATION CHANGE - Smooth transitions on config reload
-    // =========================================================================
+    window-resize {
+        spring damping-ratio=0.85 stiffness=423 epsilon=0.0001
+    }
     config-notification-open-close {
-        spring {
-            damping-ratio 0.6
-            epsilon 0.0001
-            stiffness 400
-        }
+        spring damping-ratio=0.65 stiffness=923 epsilon=0.001
     }
-
-    // =========================================================================
-    // TOUCH GESTURES (for future touch-enabled displays)
-    // =========================================================================
-    // These provide natural feeling gestures
-    touch-region {
-        duration 150ms
+    screenshot-ui-open {
+        duration-ms 200
+        curve "ease-out-quad"
     }
-
-    // =========================================================================
-    // FOCUS TRANSITION - Subtle highlight animation
-    // =========================================================================
-    focus-transition {
-        duration 200ms
-    }
-
-    // =========================================================================
-    // MINIMIZE/RESTORE - Pop in/out effect
-    // =========================================================================
-    // Custom minimized state animation (if supported)
-    minimize {
-        duration 150ms
-        scale-x {
-            from 1.0
-            to 0.8
-        }
-        scale-y {
-            from 1.0
-            to 0.8
-        }
-        opacity {
-            from 1.0
-            to 0.0
-        }
+    overview-open-close {
+        spring damping-ratio=0.85 stiffness=800 epsilon=0.0001
     }
 }
 
