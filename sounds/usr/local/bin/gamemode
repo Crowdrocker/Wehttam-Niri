@@ -23,3 +23,16 @@ discord &
 
 # 5. UI Feedback
 notify-send "iDroid" "Tactical environment active. RX 580 Power Profile: HIGH."
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# MODDING ENVIRONMENT INITIALIZATION
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+# 1. Ensure MO2 paths are mapped
+export MO2_ROOT="$HOME/Games/Modding/MO2"
+
+# 2. Set environment variables for Uncharted/Tomb Raider installers
+export WINEPREFIX="$HOME/.wine/modding_tools"
+
+# 3. Notification for Modding Ready
+notify-send "iDroid" "Modding tools initialized for Fallout 4 and Cyberpunk."
